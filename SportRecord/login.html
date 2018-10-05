@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<title>SportRecord</title>
+		<link rel="stylesheet" href="css/main.css" />
+		<script type="text/javascript" src="js/main.js" ></script>
+	</head>
+
+	<body>
+		<header>
+			<div class="header">
+				<a href="index.html">
+					<img class="logo" src="img/logo.png" title="SportRecord" />
+					<h1>SportRecord</h1>
+				</a>
+			</div>
+		</header>
+		<section>
+			<div class="box">
+				<form>
+					<p>
+						<span>用户名:&nbsp;&nbsp;&nbsp;&nbsp;</span>
+						<span><input type="text" name="username" id="username" value="zhangsan" /></span>
+					</p>
+					<p>
+						<span>密&nbsp;&nbsp;&nbsp;&nbsp;码:&nbsp;&nbsp;&nbsp;&nbsp;</span>
+						<span><input type="password" name="password" id="password" value="123123" /></span>
+					</p>
+					<p>
+						<a href="register.html">注册</a>
+						&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;
+						<a href="password.html">找回密码</a>
+					</p>
+					<p><input class="btn1" id="login" type="button" value="登&nbsp;&nbsp;&nbsp;&nbsp;录" /></p>
+				</form>
+			</div>
+		</section>
+		<footer>
+
+		</footer>
+	</body>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#login").on("click", function() {
+				var username = $("#username").val();
+				var password = $("#password").val();
+				var params = {
+					"username": username,
+					"password": password
+				};
+				login(params);
+			})
+		});
+	</script>
+
+</html>
