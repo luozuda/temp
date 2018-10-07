@@ -16,6 +16,7 @@ function login(params) {
 			window.href = "index.html";
 		},
 		error: function(responseData) {
+			$("#login").attr("disabled",false);
 			console.info(responseData);
 			alert(responseData.code)
 			alert("登录失败")
@@ -38,6 +39,25 @@ function register(params) {
 		error: function(responseData) {
 			console.info(responseData);
 			alert("注册失败")
+		}
+	});
+}
+
+function logout(params) {
+	$.ajax({
+		type: "post",
+		url: action + "/user/logout",
+		datatype: "json",
+		data: params,
+		async: false,
+		success: function(responseData) {
+			console.info(responseData);
+			alert("注销成功")
+			window.href = "index.html";
+		},
+		error: function(responseData) {
+			console.info(responseData);
+			alert("注销失败")
 		}
 	});
 }

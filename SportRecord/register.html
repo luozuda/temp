@@ -2,63 +2,91 @@
 <html lang="zh-CN">
 
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
 		<title>SportRecord</title>
 		<link rel="stylesheet" href="css/main.css" />
 		<script type="text/javascript" src="js/main.js"></script>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<!--<script type="text/javascript" src="js/popper.min.js"></script>-->
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	</head>
 
 	<body>
-		<header>
-			<div class="header">
-				<a href="index.html">
-					<img class="logo" src="img/logo.png" title="SportRecord" />
-					<h1>SportRecord</h1>
-				</a>
-				<a href="login.html"><h3>登录</h3></a>
-			</div>
-		</header>
-		<section>
-			<div class="box">
-				<form>
-					<p>
-						<span>用户名:&nbsp;&nbsp;&nbsp;&nbsp;</span>
-						<span><input type="text" name="username" id="username" value="zhangsan" /></span>
-					</p>
-					<p>
-						<span>密&nbsp;&nbsp;&nbsp;&nbsp;码:&nbsp;&nbsp;&nbsp;&nbsp;</span>
-						<span><input type="password" name="password" id="password" value="123123" /></span>
-					</p>
-					<p>
-						<span>再次确认密码:</span>
-						<span><input type="password" name="password2" id="password2" value="123123" /></span>
-					</p>
-					<p>
-						<span>邮&nbsp;&nbsp;&nbsp;&nbsp;箱:&nbsp;&nbsp;&nbsp;&nbsp;</span>
-						<span><input type="email" name="email" id="email" value="dje@qq.com"/></span>
-					</p>
-					<p><input class="btn1" id="register" type="button" value="注&nbsp;&nbsp;&nbsp;&nbsp;册" /></p>
-				</form>
-			</div>
-		</section>
-		<footer>
+		<div class="jumbotron text-center" style="margin-bottom:0">
+			<h1>SportRecord</h1>
+			<h3>个人中心</h3>
+		</div>
+		
+		<nav class="navbar navbar-default" role="navigation">
+		    <div class="container-fluid"> 
+			    <div class="navbar-header">
+			        <button type="button" class="navbar-toggle" data-toggle="collapse"
+			                data-target="#example-navbar-collapse">
+			            <span class="sr-only">切换导航</span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			        </button>
+			        <a class="navbar-brand" href="index.html">首页</a>
+			    </div>
+			    <div class="collapse navbar-collapse" id="example-navbar-collapse">
+			        <ul class="nav navbar-nav">
+			            <li><a href="login.html">登录</a></li>
+			            <li class="active"><a href="register.html">注册</a></li>
+			            <li><a href="password.html">找回密码</a></li>
+			            <!--<li class="dropdown">
+			                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			                    个人中心 <b class="caret"></b>
+			                </a>
+			                <ul class="dropdown-menu">
+			                    <li><a href="login.html">登录</a></li>
+			                    <li><a href="register.html">注册</a></li>
+			                    <li><a href="password.html">找回密码</a></li>
+			                </ul>
+			            </li>-->
+			        </ul>
+			    </div>
+		    </div>
+		</nav>
 
-		</footer>
+		<div class="container">
+			<h2 class="text-center">注册</h2>
+			<form>
+				<div class="form-group">
+					<label for="username">用户名:</label>
+					<input type="text" class="form-control" id="username" placeholder="请输入用户名">
+				</div>
+				<div class="form-group">
+					<label for="password">密码:</label>
+					<input type="password" class="form-control" id="password" placeholder="请输入密码">
+				</div>
+				<div class="form-group">
+					<label for="password2">再次确认密码:</label>
+					<input type="password" class="form-control" id="password2" placeholder="请再次输入密码">
+				</div>
+				<div class="form-group">
+					<label for="email">邮箱:</label>
+					<input type="email" class="form-control" id="email" placeholder="请输入邮箱">
+				</div>
+				<button type="submit" class="btn btn-block" id="register">注&nbsp;&nbsp;&nbsp;&nbsp;册</button>
+			</form>
+		</div>
+
+		<div class="jumbotron text-center" style="margin-bottom:0">
+			<p>联系方式：luozuda@163.com</p>
+		</div>
 	</body>
-	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script>
 		$(document).ready(function() {
-			$("#login").on("click", function() {
+			$("#register").on("click", function() {
 				var username = $("#username").val();
 				var password = $("#password").val();
 				var password2 = $("#password2").val();
-				alert(password2.equals(password))
-				if(!password2.equals(password)) {
+				alert($("#password").val()===$("#password2").val())
+				if(!($("#password").val()===$("#password2").val())){
 					alert("两次输入的密码不一致，请重新输入")
-					$("#password").val("");
-					$("#password2").val("");
-					return;
 				}
 				var email = $("#email").val();
 				var params = {
