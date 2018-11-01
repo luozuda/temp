@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>搜索</title>
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			#searchform {
+				margin-right: 20px;
+			}
+			
+			.mui-search:before {
+				top: 20%;
+			}
+			
+			.mui-search .mui-placeholder {
+				top: 10%;
+			}
+			
+			.mui-bar .mui-input-row .mui-input-clear~.mui-icon-clear {
+				top: 26%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<form class="mui-title" id="searchform">
+				<div class="mui-input-row mui-search">
+					<input type="search" name="search" id="search" class="mui-input-clear" placeholder="没有喜欢的视频，搜索一下吧">
+				</div>
+			</form>
+			<a class="mui-icon mui-icon-right-nav mui-pull-right" id="searchbtn">
+				<h4>搜索</h4></a>
+		</header>
+		<div class="mui-content" id="content">
+			<ul class="mui-table-view" v-if="show">
+				<li class="mui-table-view-cell mui-media" v-for="item in items">
+					<a class="mui-navigate-right" :href="'play.html?playid='+item.id">
+						<img class="mui-media-object mui-pull-left" :src="'../'+item.image">
+						<div class="mui-media-body">
+							{{item.title}}
+							<p class="mui-ellipsis">{{item.author}}</p>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init();
+			var vm = new Vue({
+				el: '#content',
+				data: {
+					show: false,
+					items: []
+				}
+			})
+			var searchctx = document.getElementById('search').value;
+			mui("#searchbtn")[0].addEventListener('click', function() {
+				mui.ajax('../videolist.json', {
+					data: {
+						searchctx: searchctx
+					},
+					type: 'get',
+					dataType: 'json',
+					success: function(data) {
+						vm.items = data;
+						vm.show = true;
+					},
+					error: function() {
+						mui.toast("未找到资源")
+						vm.show = false;
+					}
+
+				})
+			})
+		</script>
+	</body>
+
+</html>

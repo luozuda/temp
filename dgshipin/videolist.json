@@ -1,0 +1,35 @@
+[
+	{
+		"id": "0",
+		"resource": "video/mi-zhangjie.mp4",
+		"image": "images/zhangjie.jpg",
+		"title": "谜 电视剧《武动乾坤》主题曲",
+		"author": "张杰",
+		"detail": "《武动乾坤》将于今日(8月7日)开播,这部由张黎执导,杨洋、张天爱、吴尊、王丽坤领衔主演,柳岩、索笑坤、释小龙联袂主演的东方英雄传奇大剧,今日曝光了主题曲《谜》MV。",
+		"follow": false
+	}, {
+		"id": "1",
+		"resource": "video/zhejiushiguanlan-mabuli.mp4",
+		"image": "images/zhejiushiguanlan.jpg",
+		"title": "这就是灌篮",
+		"author": "优酷视频",
+		"detail": "9月13日起，每周四晚19：00《这！就是灌篮》人气球员到访星直播，与你玩嗨聊嗨直播间！用户可通过【灌篮MVP榜】为球员加油助威。票选出你们心中的MVP！周榜前十球员有机会空降直播间。节目中，球员们将尽情展示他们的运动技能、不放弃不服输的拼搏精神，以及！以及！你们大家在正片中无从得知的幕后小秘密！生活中的他们是什么样子？只有看了星直播才知道！",
+		"follow": true
+	}, {
+		"id": "2",
+		"resource": "video/xiaomifabuhui.mp4",
+		"image": "images/xiaomifabuhui.jpg",
+		"title": "小米发布会",
+		"author": "优酷视频",
+		"detail": "小米mix3故宫发布会",
+		"follow": true
+	}, {
+		"id": "3",
+		"resource": "video/xihongshishoufu.mp4",
+		"image": "images/xihongshishoufu.jpg",
+		"title": "西虹市首富",
+		"author": "优酷视频",
+		"detail": "《西红柿首富》精彩片段",
+		"follow": true
+	}
+]
