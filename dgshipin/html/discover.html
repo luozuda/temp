@@ -33,14 +33,14 @@
 				</ul>-->
 				<ul class="mui-table-view">
 					<li class="mui-table-view-cell mui-media" v-for="(item,index) in items" v-if="index<10">
-						<!--<a :href="'play.html?playid='+item.id">-->
+						<a @tap="play(item.id)">
 							<img class="mui-media-object mui-pull-left" :src="'../'+item.image">
 							<div class="mui-media-body">
 								{{item.title}}
-								<p class="mui-ellipsis">{{item.author}}</p>
+								<p class="mui-ellipsis">主演：{{item.actor}}</p>
 								<p class="mui-ellipsis-2">简介：{{item.detail}}</p>
 							</div>
-						<!--</a>-->
+						</a>
 					</li>
 				</ul>
 			</div>
@@ -50,17 +50,17 @@
 		<script>
 			mui.init({
 				swipeBack: false,
-//				pullRefresh: {
-//					container: '#pullrefresh',
-//					down: {
-//						style: 'circle',
-//						callback: pulldownRefresh
-//					},
-//					up: {
-//						contentrefresh: '正在加载...',
-//						callback: pullupRefresh
-//					}
-//				}
+				//				pullRefresh: {
+				//					container: '#pullrefresh',
+				//					down: {
+				//						style: 'circle',
+				//						callback: pulldownRefresh
+				//					},
+				//					up: {
+				//						contentrefresh: '正在加载...',
+				//						callback: pullupRefresh
+				//					}
+				//				}
 			});
 			/**
 			 * 下拉刷新具体业务实现
@@ -122,6 +122,11 @@
 				el: '#pullrefresh',
 				data: {
 					items: []
+				},
+				methods: {
+					play: function(id) {
+						plus.webview.open('play.html?playid=' + id, 'play', {}, 'zoom-fade-out', 250);
+					}
 				}
 			})
 			mui.ajax('../videolist.json', {

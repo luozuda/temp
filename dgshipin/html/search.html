@@ -40,11 +40,11 @@
 		<div class="mui-content" id="content">
 			<ul class="mui-table-view" v-if="show">
 				<li class="mui-table-view-cell mui-media" v-for="item in items">
-					<a class="mui-navigate-right" :href="'play.html?playid='+item.id">
-						<img class="mui-media-object mui-pull-left" :src="'../'+item.image">
+					<a class="mui-navigate-right" :href="'play.html?playid='+item.movieid">
+						<img class="mui-media-object mui-pull-left" :src="'../'+item.poster">
 						<div class="mui-media-body">
 							{{item.title}}
-							<p class="mui-ellipsis">{{item.author}}</p>
+							<p class="mui-ellipsis">{{item.writers}}</p>
 						</div>
 					</a>
 				</li>
@@ -61,19 +61,24 @@
 					items: []
 				}
 			})
-			var searchctx = document.getElementById('search').value;
 			mui("#searchbtn")[0].addEventListener('click', function() {
-				mui.ajax('../videolist.json', {
+				var title = document.getElementById('search').value;
+				var url = 'http://apis.haoservice.com/lifeservice/video/p?keyword=%E6%9D%8E%E5%B0%8F%E9%BE%99&key=ccbf27d33ac240f6b1759c4bf394f749';
+				mui.ajax(url, {
 					data: {
-						searchctx: searchctx
+
 					},
-					type: 'get',
+					type: 'GET',
 					dataType: 'json',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					crossDomain: true, //强制使用5+跨域
 					success: function(data) {
-						vm.items = data;
+						vm.items = data.result;
 						vm.show = true;
 					},
-					error: function() {
+					error: function(xhr, type, errorThrown) {
 						mui.toast("未找到资源")
 						vm.show = false;
 					}

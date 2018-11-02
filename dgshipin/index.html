@@ -31,20 +31,20 @@
 				<div class="mui-slider-group mui-slider-loop">
 					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
 					<div class="mui-slider-item mui-slider-item-duplicate" v-for="(item,index) in items" v-if="index==3">
-						<a :href="'html/play.html?playid='+item.id">
+						<a @tap="play(item.id)">
 							<img :src="'images/'+item.image">
 							<p class="mui-slider-title">{{item.title}}</p>
 						</a>
 					</div>
 					<div class="mui-slider-item" v-for="(item,index) in items" v-if="index<=3">
-						<a :href="'html/play.html?playid='+item.id">
+						<a @tap="play(item.id)">
 							<img :src="'images/'+item.image">
 							<p class="mui-slider-title">{{item.title}}</p>
 						</a>
 					</div>
 					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
 					<div class="mui-slider-item mui-slider-item-duplicate" v-for="(item,index) in items" v-if="index==0">
-						<a :href="'html/play.html?playid='+item.id">
+						<a @tap="play(item.id)">
 							<img :src="'images/'+item.image">
 							<p class="mui-slider-title">{{item.title}}</p>
 						</a>
@@ -61,9 +61,11 @@
 				<h4 style="background-color:#efeff4;padding: 6px;">特别推荐</h4>
 				<ul class="mui-table-view mui-grid-view">
 					<li v-for="(item,author) in items" v-if="item.follow" class="mui-table-view-cell mui-media mui-col-xs-6">
-						<a :href="'html/play.html?playid='+item.id">
+						<a @tap="play(item.id)">
 							<img class="mui-media-object" :src="'images/'+item.image">
-							<div class="mui-media-body">{{item.title}}</div>
+							<div class="mui-media-body">
+								<span class="mui-ellipsis mui-pull-left"><strong>{{item.title}}</strong> /{{item.actor}}</span>
+							</div>
 						</a>
 					</li>
 				</ul>
