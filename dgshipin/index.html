@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title>首页</title>
+		<title></title>
 		<script src="js/mui.min.js"></script>
 		<link href="css/mui.min.css" rel="stylesheet" />
 		<style type="text/css">
@@ -32,20 +32,20 @@
 					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
 					<div class="mui-slider-item mui-slider-item-duplicate" v-for="(item,index) in items" v-if="index==3">
 						<a @tap="play(item.id)">
-							<img :src="'images/'+item.image">
+							<img :src="item.image">
 							<p class="mui-slider-title">{{item.title}}</p>
 						</a>
 					</div>
 					<div class="mui-slider-item" v-for="(item,index) in items" v-if="index<=3">
 						<a @tap="play(item.id)">
-							<img :src="'images/'+item.image">
+							<img :src="item.image">
 							<p class="mui-slider-title">{{item.title}}</p>
 						</a>
 					</div>
 					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
 					<div class="mui-slider-item mui-slider-item-duplicate" v-for="(item,index) in items" v-if="index==0">
 						<a @tap="play(item.id)">
-							<img :src="'images/'+item.image">
+							<img :src="item.image">
 							<p class="mui-slider-title">{{item.title}}</p>
 						</a>
 					</div>
@@ -60,45 +60,23 @@
 			<div id="slider2">
 				<h4 style="background-color:#efeff4;padding: 6px;">特别推荐</h4>
 				<ul class="mui-table-view mui-grid-view">
-					<li v-for="(item,author) in items" v-if="item.follow" class="mui-table-view-cell mui-media mui-col-xs-6">
+					<li v-for="item in items" class="mui-table-view-cell mui-media mui-col-xs-6">
 						<a @tap="play(item.id)">
-							<img class="mui-media-object" :src="'images/'+item.image">
+							<img class="mui-media-object" :src="item.image">
 							<div class="mui-media-body">
-								<span class="mui-ellipsis mui-pull-left"><strong>{{item.title}}</strong> /{{item.actor}}</span>
+								<span class="mui-ellipsis mui-pull-left">
+									<strong>{{item.title}}</strong>&nbsp;&nbsp;{{item.actor}}
+								</span>
 							</div>
 						</a>
 					</li>
 				</ul>
 			</div>
 		</div>
-		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
 		<script src=" js/util.js "></script>
 		<script type="text/javascript ">
 			(function() {
-				mui.init({
-					swipeBack: true, //启用右滑关闭功能
-
-					pullRefresh: { //下拉刷新
-						container: "#refreshContainer",
-						down: {
-							style: 'circle',
-							callback: function() {
-								//业务代码，ajax。。。。
-								mui("#refreshContainer").pullRefresh().endPulldownToRefresh(); //停止下拉刷新
-							}
-						},
-						up: {
-							contentrefresh: '正在加载...',
-							contentnomore: '没有更多数据了',
-							callback: function() {
-								//业务代码，ajax。。。。
-								mui("#refreshContainer").pullRefresh().endPullupToRefresh();
-								mui.toast("暂无更多数据");
-							}
-						}
-					}
-				});
+				mui.init();
 				mui.plusReady(function() {
 
 					// 创建子webview窗口 并初始化
@@ -119,9 +97,9 @@
 						var clientX = e.clientX;
 						if(clientX > 0 && clientX <= parseInt(pageW * 0.25)) {
 							currIndex = 0;
-						} else if(clientX > parseInt(pageW * 0.25) && clientX <= parseInt(pageW * 0.45)) {
+						} else if(clientX > parseInt(pageW * 0.25) && clientX <= parseInt(pageW * 0.5)) {
 							currIndex = 1;
-						} else if(clientX > parseInt(pageW * 0.45) && clientX <= parseInt(pageW * 0.8)) {
+						} else if(clientX > parseInt(pageW * 0.5) && clientX <= parseInt(pageW * 0.75)) {
 							currIndex = 2;
 						} else {
 							currIndex = 3;
@@ -138,21 +116,85 @@
 						}
 
 						//底部选项卡切换
-//						if(currIndex !== 3) {
-							util.toggleNview(currIndex);
-							// 子页面切换
-							util.changeSubpage(targetPage, activePage, aniShow);
-							//更新当前活跃的页面
-							activePage = targetPage;
-//						} else {
-							//第四个tab 打开新窗口
-//							plus.webview.open('html/main.html', 'new', {}, 'pop-in', 200);
-//						}
+						//						if(currIndex !== 3) {
+						util.toggleNview(currIndex);
+						// 子页面切换
+						util.changeSubpage(targetPage, activePage, aniShow);
+						//更新当前活跃的页面
+						activePage = targetPage;
+						//						} else {
+						//第四个tab 打开新窗口
+						//							plus.webview.open('html/main.html', 'new', {}, 'pop-in', 200);
+						//						}
 					});
 				});
 			})();
 		</script>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#lists',
+				data: {
+					playid: '',
+					items: [{
+						"id": "0",
+						"resource": "video/mi-zhangjie.mp4",
+						"image": "images/zhangjie.jpg",
+						"title": "谜",
+						"actor": "张杰",
+						"detail": "《武动乾坤》将于今日(8月7日)开播,这部由张黎执导,杨洋、张天爱、吴尊、王丽坤领衔主演,柳岩、索笑坤、释小龙联袂主演的东方英雄传奇大剧,今日曝光了主题曲《谜》MV。",
+						"follow": false
+					}, {
+						"id": "1",
+						"resource": "video/zhejiushiguanlan-mabuli.mp4",
+						"image": "images/zhejiushiguanlan.jpg",
+						"title": "这就是灌篮",
+						"actor": "马布里",
+						"detail": "9月13日起，每周四晚19：00《这！就是灌篮》人气球员到访星直播，与你玩嗨聊嗨直播间！用户可通过【灌篮MVP榜】为球员加油助威。票选出你们心中的MVP！周榜前十球员有机会空降直播间。节目中，球员们将尽情展示他们的运动技能、不放弃不服输的拼搏精神，以及！以及！你们大家在正片中无从得知的幕后小秘密！生活中的他们是什么样子？只有看了星直播才知道！",
+						"follow": true
+					}, {
+						"id": "2",
+						"resource": "video/xiaomifabuhui.mp4",
+						"image": "images/xiaomifabuhui.jpg",
+						"title": "小米发布会",
+						"actor": "雷军",
+						"detail": "小米mix3故宫发布会",
+						"follow": true
+					}, {
+						"id": "3",
+						"resource": "video/xihongshishoufu.mp4",
+						"image": "images/xihongshishoufu.jpg",
+						"title": "西虹市首富",
+						"actor": "沈腾",
+						"detail": "《西红柿首富》精彩片段",
+						"follow": true
+					}]
+				},
+				methods: {
+					play: function(id) {
+						plus.webview.open('html/play.html?playid=' + id, 'play', {}, 'zoom-fade-out', 250);
+					}
+				}
+			})
+
+			mui.ajax("videolist.json", {
+				data: {
+
+				},
+				type: 'get',
+				dataType: 'json',
+				success: function(data) {
+					//					mui.toast(data.resultcode)
+					if(data.resultcode == "1") {
+						vm.items = data.result;
+					}
+				},
+				error: function(xhr, type, errorThrown) {
+					mui.alert(xhr + '--' + type + '--' + errorThrown)
+				}
+			})
+
+			//图片轮播
 			var gallery = mui("#slider")
 			gallery.slider({
 				interval: 3000

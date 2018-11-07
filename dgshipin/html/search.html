@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title>搜索</title>
+		<title></title>
 		<script src="../js/mui.min.js"></script>
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<style type="text/css">
@@ -37,15 +37,15 @@
 			<a class="mui-icon mui-icon-right-nav mui-pull-right" id="searchbtn">
 				<h4>搜索</h4></a>
 		</header>
-		<div class="mui-content" id="content">
-			<ul class="mui-table-view" v-if="show">
-				<li class="mui-table-view-cell mui-media" v-for="item in items">
-					<a class="mui-navigate-right" :href="'play.html?playid='+item.movieid">
-						<img class="mui-media-object mui-pull-left" :src="'../'+item.poster">
+		<div class="mui-content" id="content" style="display: none;">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-media">
+					<a href="#">
+						<img class="mui-media-object mui-pull-left" :src="items.avatar">
 						<div class="mui-media-body">
-							{{item.title}}
-							<p class="mui-ellipsis">{{item.writers}}</p>
+							{{items.name}}
 						</div>
+						<h6 class="mui-ellipsis">{{items.intro}}</h6>
 					</a>
 				</li>
 			</ul>
@@ -54,33 +54,32 @@
 		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			mui.init();
-			var vm = new Vue({
-				el: '#content',
-				data: {
-					show: false,
-					items: []
-				}
-			})
-			mui("#searchbtn")[0].addEventListener('click', function() {
+			document.getElementById("searchbtn").addEventListener('tap', function() {
 				var title = document.getElementById('search').value;
-				var url = 'http://apis.haoservice.com/lifeservice/video/p?keyword=%E6%9D%8E%E5%B0%8F%E9%BE%99&key=ccbf27d33ac240f6b1759c4bf394f749';
+				//				var url = 'http://apis.haoservice.com/lifeservice/video/p?keyword=%E6%9D%8E%E5%B0%8F%E9%BE%99&key=ccbf27d33ac240f6b1759c4bf394f749';
+				var url = 'http://apis.haoservice.com/lifeservice/video/p?key=ccbf27d33ac240f6b1759c4bf394f749';
 				mui.ajax(url, {
 					data: {
-
+						keyword: title
 					},
 					type: 'GET',
 					dataType: 'json',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					crossDomain: true, //强制使用5+跨域
 					success: function(data) {
-						vm.items = data.result;
-						vm.show = true;
+						if(data.result) {
+							var vm = new Vue({
+								el: '#content',
+								data: {
+									items: data.result
+								}
+							})
+							document.getElementById("content").style.display = "block";
+						} else {
+							document.getElementById("content").style.display = "none";
+						}
+						mui.toast(data.reason)
 					},
 					error: function(xhr, type, errorThrown) {
 						mui.toast("未找到资源")
-						vm.show = false;
 					}
 
 				})

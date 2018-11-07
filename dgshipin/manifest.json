@@ -136,7 +136,7 @@
 							"id": "indexText",
 							"text": "首页",
 							"position": {
-								"top": "23px",
+								"top": "24px",
 								"left": "0",
 								"width": "25%",
 								"height": "24px"
@@ -165,7 +165,7 @@
 							"id": "newsText",
 							"text": "发现",
 							"position": {
-								"top": "23px",
+								"top": "24px",
 								"left": "25%",
 								"width": "25%",
 								"height": "24px"
@@ -177,7 +177,7 @@
 						}, {
 							"tag": "font",
 							"id": "contactIcon",
-							"text": "\ue63b",
+							"text": "\ue6e8",
 							"position": {
 								"top": "4px",
 								"left": "50%",
@@ -192,7 +192,7 @@
 						}, {
 							"tag": "font",
 							"id": "contactText",
-							"text": "关注",
+							"text": "头条",
 							"position": {
 								"top": "24px",
 								"left": "50%",
@@ -369,7 +369,8 @@
 					null,
 					"html/main.html",
 					"html/follow.html",
-					"main.html"
+					"main.html",
+					"html/toutiao.html"
 				],
 				"priority": 0
 			},
@@ -446,7 +447,8 @@
 				"resources": [],
 				"refer": [
 					"index.html",
-					"html/play.html"
+					"html/play.html",
+					"html/search.html"
 				],
 				"priority": 0
 			},
@@ -468,7 +470,9 @@
 			"html/follow.html": {
 				"resources": [],
 				"refer": [
-					"html/play.html"
+					"html/play.html",
+					"html/toutiao.html",
+					"html/toutiaoContainer.html"
 				],
 				"priority": 0
 			},
@@ -485,7 +489,23 @@
 				"resources": [],
 				"refer": [
 					"main.html",
-					"reg.html"
+					"reg.html",
+					"unlock.html"
+				],
+				"priority": 0
+			},
+			"html/toutiao.html": {
+				"resources": [],
+				"refer": [
+					"html/toutiaoContainer.html"
+				],
+				"priority": 0
+			},
+			"unlock.html": {
+				"resources": [],
+				"refer": [
+					"main.html",
+					"login.html"
 				],
 				"priority": 0
 			}

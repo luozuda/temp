@@ -22,7 +22,8 @@
       "html/main.html",
       "html/follow.html",
       "html/discover.html",
-      "main.html"
+      "main.html",
+      "html/toutiao.html"
     ]
   },
   "launch.html": {
@@ -88,7 +89,8 @@
   "html/search.html": {
     "refer": [
       "index.html",
-      "html/play.html"
+      "html/play.html",
+      "html/search.html"
     ],
     "resources": []
   },
@@ -114,7 +116,9 @@
   },
   "html/follow.html": {
     "refer": [
-      "html/play.html"
+      "html/play.html",
+      "html/toutiao.html",
+      "html/toutiaoContainer.html"
     ],
     "resources": []
   },
@@ -129,8 +133,20 @@
     "refer": [
       "main.html",
       "reg.html",
-      "index.html"
+      "index.html",
+      "unlock.html"
     ],
     "resources": []
+  },
+  "html/toutiao.html": {
+    "refer": [
+      "html/toutiaoContainer.html"
+    ]
+  },
+  "unlock.html": {
+    "refer": [
+      "main.html",
+      "login.html"
+    ]
   }
 }
