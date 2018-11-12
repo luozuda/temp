@@ -1,23 +1,90 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title>new webview</title>
+		<title></title>
 		<script src="../js/mui.min.js"></script>
 		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			.mui-table-view-cell{
+				display: flex;
+			}
+			
+			#input-nav {
+				display: block;
+			}
+			
+			#input {
+				max-width: 60%;
+			}
+		</style>
 	</head>
+
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">新窗口</h1>
+			<h1 class="mui-title">xxx</h1>
 		</header>
-		<div class="mui-content">
-			<p style="margin-top:20px;margin-left: 20px;">这是subNView模式下打开的新窗口。</p>
+		<div class="mui-content" id="page">
+			<ul class="mui-table-view" v-for="item in items">
+				<li class="mui-table-view-cell">
+					<img src="../images/60x60.gif" />
+					<span>
+						{{item.l}}
+					</span>
+				</li>
+			</ul>
+
+			<nav class="mui-bar mui-bar-tab" id="input-nav">
+				<input type="text" name="" id="input" value="" />
+				<span @tap="sendMsg">
+					发送
+				</span>
+			</nav>
 		</div>
-		
+
 		<script>
 			mui.init();
 		</script>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el: '#page',
+				data: {
+					items: []
+				},
+				methods: {
+					sendMsg: function() {
+						Vue.set(this.items, this.items.length, {l:"啦啦啦"})
+					}
+				},
+				beforeCreate: function() {
+	                // 初始化一个 WebSocket 对象
+					var ws = new WebSocket("ws://121.40.165.18:8800");
+					
+					// 建立 web socket 连接成功触发事件
+					ws.onopen = function () {
+					  // 使用 send() 方法发送数据
+					  ws.send("发送数据");
+					  alert("数据发送中...");
+					};
+					
+					// 接收服务端数据时触发事件
+					ws.onmessage = function (evt) {
+					  var received_msg = evt.data;
+					  alert(received_msg);
+					  alert("数据已接收...");
+					};
+					
+					// 断开 web socket 连接成功触发事件
+					ws.onclose = function () {
+					  alert("连接已关闭...");
+					};
+				}
+			})
+		</script>
 	</body>
+
 </html>

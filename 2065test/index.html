@@ -16,22 +16,43 @@
 			<h1 class="mui-title">消息</h1>
 		</header>
 		<div class="mui-content">
+			<ul class="mui-table-view">
+			        <li class="mui-table-view-cell">
+			            <a class="mui-navigate-right" id="chat">
+			                Item 1
+			            </a>
+			        </li>
+			        <li class="mui-table-view-cell">
+			            <a class="mui-navigate-right">
+			                 Item 2
+			            </a>
+			        </li>
+			        <li class="mui-table-view-cell">
+			            <a class="mui-navigate-right">
+			                 Item 3
+			            </a>
+			        </li>
+			    </ul>
 		</div>
 
 		<script src="js/util.js"></script>
 		<script type="text/javascript">
+			document.getElementById("chat").addEventListener('tap',function(){
+				plus.webview.open('html/new-webview.html', 'new', {}, 'pop-in', 500);
+			})
+			
 			var main, menu, mask = mui.createMask(_closeMenu);
 			var showMenu = false,
 				mode = 'main-move';
 
-			if(!mui.os.android) {
-				//整体滑动暂不支持android手机，因为两个页面的移动动画，无法保证同步性；
-				document.getElementById("move-togger").classList.remove('mui-hidden');
-				var spans = document.querySelectorAll('.android-only');
-				for(var i = 0, len = spans.length; i < len; i++) {
-					spans[i].style.display = "none";
-				}
-			}
+//			if(!mui.os.android) {
+//				//整体滑动暂不支持android手机，因为两个页面的移动动画，无法保证同步性；
+//				document.getElementById("move-togger").classList.remove('mui-hidden');
+//				var spans = document.querySelectorAll('.android-only');
+//				for(var i = 0, len = spans.length; i < len; i++) {
+//					spans[i].style.display = "none";
+//				}
+//			}
 
 			(function() {
 
