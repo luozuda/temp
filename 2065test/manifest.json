@@ -336,7 +336,8 @@
 				"refer": [
 					"html/tab-webview-subpage-contact.html",
 					"html/new-webview.html",
-					"offcanvas-drag-right-plus-menu.html"
+					"offcanvas-drag-right-plus-menu.html",
+					"html/chatView.html"
 				],
 				"priority": 0
 			},
@@ -389,7 +390,7 @@
 				"refer": [],
 				"priority": 0
 			},
-			"html/new-webview.html": {
+			"html/chatView.html": {
 				"resources": [
 					"css/mui.min.css",
 					"js/mui.min.js",

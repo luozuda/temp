@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/main.css"/>
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			/*顶部导航栏*/
+			
+			.mui-bar.mui-bar-nav {
+				background-color: #FFFFFF;
+			}
+			/*底部栏*/
+			
+			#subnav {
+				display: inline-block;
+				height: 3rem;
+				background-color: #EDEEF2;
+				/*border: 1px solid blue;*/
+			}
+			
+			#sound{
+				display: inline-block;
+				width: 12%;
+				height: 100%;
+				background-color: beige;
+				/*border: 1px solid red;*/
+			}
+			
+			#input {
+				display: inline-block;
+				width: 60%;
+				height: 100%;
+				padding: 0.5rem;
+				border-radius: 8px;
+				background-color: #fff;
+				/*border: 1px solid red;*/
+			}
+			
+			#emoji{
+				display: inline-block;
+				width: 12%;
+				height: 100%;
+				background-color: beige;
+				/*border: 1px solid red;*/
+			}
+			
+			#send{
+				display: inline-block;
+				width: 12%;
+				height: 100%;
+				background-color: beige;
+				/*border: 1px solid red;*/
+			}
+			/*聊天信息显示框*/
+			
+			.mui-content {
+				top: 0px;
+				bottom: 3rem;
+				background-color: #F7F7F7;
+				/*border: 1px solid blue;*/
+			}
+			
+			.mui-table-view {
+				background-color: #F7F7F7;
+			}
+			
+			.mui-table-view:before,
+			.mui-table-view:after {
+				height: 0;
+			}
+			
+			.mui-table-view-cell:after{
+				height: 0;
+			}
+			
+			.msg {
+				display: block;
+				border-radius: 6px;
+				padding: 0.55rem;
+				background-color: #fff;
+				border: 1px solid black;
+			}
+			
+			/*emoji表情*/
+			.emojiarea {
+				background-color: #fff;
+				padding: 1rem;
+			}
+			
+			.emojidiv{
+				display: inline-block;
+				margin: 0.4rem 1rem;
+			}
+			
+			.emoji{
+				display: inline-block;
+				width: 1rem;
+				height: 1rem;
+				vertical-align: middle;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="page">
+
+			<header class="mui-bar mui-bar-nav">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				<h1 class="mui-title">{{username}}</h1>
+			</header>
+			<nav class="mui-bar mui-bar-tab" id="subnav">
+				<span id="sound"></span>
+				<div id="input" v-model="inputValue" contenteditable="true"></div>
+				<div id="emoji">
+					<!--<button v-if="send" @tap="send">发送</button>
+					<span class="mui-icon mui-icon-plus" v-else="sendbtn"></span>-->
+				</div>
+				<div id="send">
+					<!--<button v-if="send" @tap="send">发送</button>
+					<span class="mui-icon mui-icon-plus" v-else="sendbtn"></span>-->
+				</div>
+			</nav>
+			<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell mui-media" v-for="(object) in chatArrays">
+							<img class="mui-media-object mui-pull-left" :src="object.icon" />
+							<div class="mui-media-body msg" v-html="object.msg"></div>
+						</li>
+					</ul>
+					
+				</div>
+			</div>
+			<div class="emojiarea">
+				<div class="emojidiv" v-for="emoji in emojis">
+					<img class="emoji" :src="emoji.src" @tap="addEmoji(emoji.name)" />
+				</div>
+			</div>
+
+		</div>
+
+		<script>
+			mui.init({
+				beforeback: function(){
+					var currentPage = plus.webview.currentWebview();
+//					currentPage.addEventListener('close', function(e) {
+//						ws.close()
+//					})
+					//返回true，继续页面关闭逻辑
+					return true;
+				}
+			});
+		</script>
+		<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// 初始化一个 WebSocket 对象
+			var ws = new WebSocket("ws://123.207.167.163:9010/ajaxchattest");
+			/*
+			 * 只读属性 readyState 表示连接状态，可以是以下值：
+
+				0 - 表示连接尚未建立。
+	
+				1 - 表示连接已建立，可以进行通信。
+	
+				2 - 表示连接正在进行关闭。
+	
+				3 - 表示连接已经关闭或者连接不能打开。
+			*/
+			// 建立 web socket 连接成功触发事件
+			ws.onopen = function() {
+				// 使用 send() 方法发送数据
+				ws.send("发送用户id"); //服务器即可知道发送数据的目标
+				alert("数据发送中..." + ws.readyState);
+			};
+
+			// 接收服务端数据时触发事件
+			ws.onmessage = function(evt) {
+				var received_msg = evt.data;
+				vm.receive(received_msg)
+				alert("数据已接收..." + ws.readyState);
+			};
+
+			// web socket 连接发生错误触发事件
+			ws.onerror = function() {
+				alert("连接发生错误..." + ws.readyState);
+			};
+			
+			// 断开 web socket 连接成功触发事件
+			ws.onclose = function() {
+				alert("连接已关闭..." + ws.readyState);
+			};
+			
+			var emojis=[{
+		        name: '微笑',
+		        src: '../images/emoji/default/0.gif'
+		    },{
+		        name: '撇嘴',
+		        src: '../images/emoji/default/1.gif'
+		    },{
+		        name: '好色',
+		        src: '../images/emoji/default/2.gif'
+		    },{
+		        name: '发呆',
+		        src: '../images/emoji/default/3.gif'
+		    },{
+		        name: '得意',
+		        src: '../images/emoji/default/4.gif'
+		    },{
+		        name: '哭',
+		        src: '../images/emoji/default/5.gif'
+		    },{
+		        name: '害羞',
+		        src: '../images/emoji/default/6.gif'
+		    },{
+		        name: '闭嘴',
+		        src: '../images/emoji/default/7.gif'
+		    },{
+		        name: '睡觉',
+		        src: '../images/emoji/default/8.gif'
+		    },{
+		        name: '大哭',
+		        src: '../images/emoji/default/9.gif'
+		    },{
+		        name: '恼火',
+		        src: '../images/emoji/default/10.gif'
+		    },{
+		        name: '发怒',
+		        src: '../images/emoji/default/11.gif'
+		    },{
+		        name: '调皮',
+		        src: '../images/emoji/default/12.gif'
+		    },{
+		        name: '呲笑',
+		        src: '../images/emoji/default/13.gif'
+		    },{
+		        name: '惊讶',
+		        src: '../images/emoji/default/14.gif'
+		    }]
+			
+			var vm = new Vue({
+				el: '#page',
+				data: {
+					username: '布偶猫',
+					chatArrays: [],
+					inputValue: '',
+					send: true,
+					emojis: emojis
+				},
+				methods: {
+					send: function() {
+						var that=this;
+						var emojiText;
+						var inputObj=document.getElementById("input");
+						if(!inputObj.innerHTML){
+							mui.toast("发送内容不能为空");
+							return
+						}
+						this.chatArrays.push({//把发送的信息显示在聊天信息框
+							icon: '../images/logo.png',
+							msg: inputObj.innerHTML
+						})
+						this.emojis.forEach(function(emoji){//将表情图片替换为emoji代号再发送给后端
+							emojiText=that.nofilterEmoji(inputObj.innerHTML,emoji);
+							inputObj.innerHTML=emojiText;
+						})
+						ws.send(inputObj.innerHTML)
+						document.getElementById("input").innerHTML="";
+						document.activeElement.blur();
+					},
+					receive: function(received_msg) {
+						var that=this;
+						var emojiHtml=received_msg;
+						this.emojis.forEach(function(emoji){//将emoji代号替换为表情图片
+							emojiHtml=that.filterEmoji(emojiHtml,emoji);
+						})
+						this.chatArrays.push({//把接收的信息将emoji代号替换为表情图片后显示在聊天信息框
+							icon: '../images/logo.png',
+							msg: emojiHtml
+						})
+					},
+					addEmoji:function(res) {
+						var that=this;
+						var emojiHtml;
+						var inputObj=document.getElementById("input");
+						this.emojis.forEach(function(emoji){
+							if(emoji.name==res){
+								emojiHtml=that.filterEmoji('/'+res,emoji);
+								inputObj.innerHTML+=emojiHtml;//这里会把img标签的/去掉,因为html中没有闭合
+								//alert(inputObj.innerHTML+"=inputObj.innerHTML"+emojiHtml+"=emojiHtml")
+							}
+						})
+				    },
+				    filterEmoji:function(input, emoji) {//将emoji代号替换为表情图片
+						var regexp = new RegExp('\\[' + emoji.name + '\\]|\\/' + emoji.name, 'gm');
+						var result = input.replace(regexp, '<img class="emoji" src="' + emoji.src + '"/>');
+						return result;
+					},
+					nofilterEmoji:function(input,emoji){//将表情图片替换为emoji代号
+						var reg='<img class=\"emoji\" src=\"' + emoji.src + '\">';
+						var regexp=new RegExp(reg);
+						var result = input.replace(regexp, '\/' + emoji.name);
+						return result;
+					}
+				}
+			})
+			
+		</script>
+	</body>
+
+</html>

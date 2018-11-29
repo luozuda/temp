@@ -5,54 +5,128 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
 		<script src="js/mui.min.js"></script>
 		<link href="css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			/*顶部导航栏*/
+			
+			.mui-bar.mui-bar-nav {
+				background-color: #FFFFFF;
+			}
+			/*聊天信息显示框*/
+			
+			.mui-content {
+				position: absolute;
+				top: -14px;
+				bottom: 51px;
+				width: 100%;
+				background-color: #F7F7F7;
+				/*border: 1px solid blue;*/
+			}
+			
+			.mui-table-view {
+				background-color: #F7F7F7;
+				/*border: 1px solid blue;*/
+			}
+		</style>
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav">
-			<a class="mui-action-menu mui-icon mui-icon-bars mui-pull-left"></a>
-			<a class="mui-action-back mui-btn mui-btn-link mui-pull-right">关闭</a>
-			<h1 class="mui-title">消息</h1>
-		</header>
-		<div class="mui-content">
-			<ul class="mui-table-view">
-			        <li class="mui-table-view-cell">
-			            <a class="mui-navigate-right" id="chat">
-			                Item 1
-			            </a>
-			        </li>
-			        <li class="mui-table-view-cell">
-			            <a class="mui-navigate-right">
-			                 Item 2
-			            </a>
-			        </li>
-			        <li class="mui-table-view-cell">
-			            <a class="mui-navigate-right">
-			                 Item 3
-			            </a>
-			        </li>
-			    </ul>
+		<div id="page">
+
+			<header class="mui-bar mui-bar-nav">
+				<a class="mui-action-menu mui-icon mui-icon-bars mui-pull-left"></a>
+				<h1 class="mui-title">消息</h1>
+			</header>
+			<div class="mui-content">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media" v-for="item in items">
+						<a href="javascript:;" @tap="toChat">
+							<img class="mui-media-object mui-pull-left" src="images/60x60.gif" />
+							<div class="mui-media-body">
+								小明
+								<p class='mui-ellipsis'>{{item.msg}}</p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+
 		</div>
 
 		<script src="js/util.js"></script>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			document.getElementById("chat").addEventListener('tap',function(){
-				plus.webview.open('html/new-webview.html', 'new', {}, 'pop-in', 500);
+			// 初始化一个 WebSocket 对象
+			var ws = new WebSocket("ws://123.207.167.163:9010/ajaxchattest");
+			/*
+			 * 只读属性 readyState 表示连接状态，可以是以下值：
+
+				0 - 表示连接尚未建立。
+	
+				1 - 表示连接已建立，可以进行通信。
+	
+				2 - 表示连接正在进行关闭。
+	
+				3 - 表示连接已经关闭或者连接不能打开。
+			*/
+
+			// 建立 web socket 连接成功触发事件
+			ws.onopen = function() {
+				// 使用 send() 方法发送数据
+				ws.send("你好"); //服务器即可知道发送数据的目标
+				alert("数据发送中..." + ws.readyState);
+			};
+
+			// 接收服务端数据时触发事件
+			ws.onmessage = function(evt) {
+				var received_msg = evt.data;
+				vm.receive(received_msg)
+				alert("数据已接收..." + ws.readyState);
+			};
+
+			// 断开 web socket 连接成功触发事件
+			ws.onclose = function() {
+				alert("连接已关闭..." + ws.readyState);
+			};
+
+			var vm = new Vue({
+				el: '#page',
+				data: {
+					items: []
+				},
+				methods: {
+					receive: function(received_msg) {
+						Vue.set(this.items, this.items.length, {
+							msg: received_msg
+						})
+					},
+					toChat: function() {
+						var wv=mui.openWindow({
+							url: 'html/chatView.html',
+							id: 'chatView',
+							extras: {
+								ws: ws
+							}
+						})
+						//						plus.webview.open('html/chatView.html', 'chatView', {}, 'slide-in-right', 500);
+					}
+				}
 			})
 			
 			var main, menu, mask = mui.createMask(_closeMenu);
 			var showMenu = false,
 				mode = 'main-move';
 
-//			if(!mui.os.android) {
-//				//整体滑动暂不支持android手机，因为两个页面的移动动画，无法保证同步性；
-//				document.getElementById("move-togger").classList.remove('mui-hidden');
-//				var spans = document.querySelectorAll('.android-only');
-//				for(var i = 0, len = spans.length; i < len; i++) {
-//					spans[i].style.display = "none";
-//				}
-//			}
+			//			if(!mui.os.android) {
+			//				//整体滑动暂不支持android手机，因为两个页面的移动动画，无法保证同步性；
+			//				document.getElementById("move-togger").classList.remove('mui-hidden');
+			//				var spans = document.querySelectorAll('.android-only');
+			//				for(var i = 0, len = spans.length; i < len; i++) {
+			//					spans[i].style.display = "none";
+			//				}
+			//			}
 
 			(function() {
 
@@ -136,6 +210,7 @@
 							}
 						});
 					}, 300);
+
 				});
 			})();
 
