@@ -1,53 +1,106 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-	<meta charset="utf-8" />
-	<title></title>
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			/* background-color: #b2c2a5; */
-			background: url(bg.jpg) no-repeat center 0;
-		}
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.content {
+				background: url(bg.jpg) no-repeat center 0;
+				height: 800px;
+			}
+			
+			a {
+				text-decoration: none;
+			}
+			
+			.container::after {
+				display: block;
+				content: "";
+				clear: both;
+			}
+			
+			.topbar {
+				background-color: #333;
+				height: 40px;
+			}
+			
+			.container {
+				width: 1200px;
+				margin: 0 auto;
+			}
+			
+			.topbar-nav {
+				float: left;
+			}
+			
+			.topbar-nav a {
+				display: inline-block;
+				width: 150px;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				color: #aaa;
+			}
+			
+			.topbar-nav a:hover {
+				color: #efefef;
+			}
+			
+			.topbar-info {
+				float: right;
+			}
+			
+			.topbar-info a {
+				display: inline-block;
+				width: 60px;
+				height: 40px;
+				line-height: 40px;
+				font-size: 12px;
+				text-align: center;
+				color: #aa5555;
+			}
+			
+			.topbar-info a:hover {
+				color: #efefef;
+			}
+			
+			.bottom {
+				width: 100%;
+				height: 40px;
+				line-height: 40px;
+				font-size: 12px;
+				text-align: center;
+				background-color: #333;
+				color: #fff;
+			}
+		</style>
+	</head>
 
-		a {
-			text-decoration: none;
-		}
-
-		.topbar {
-			background-color: #333;
-			height: 40px;
-		}
-
-		.container {
-			width: 1200px;
-			margin: 0 auto;
-		}
-
-		.container a {
-			display: inline-block;
-			width: 150px;
-			height: 40px;
-			line-height: 40px;
-			text-align: center;
-			color: #aaa;
-		}
-
-		.container a:hover {
-			color: #efefef;
-			/* transition: all 1s; */
-		}
-	</style>
-</head>
-
-<body>
-	<div class="topbar">
-		<div class="container">
-			<a href="xiaomiseckill">小米闪购</a>
+	<body>
+		<div class="topbar">
+			<div class="container">
+				<div class="topbar-nav">
+					<a href="https://my.oschina.net/u/3986435/">开源中国个人博客</a>
+					<a href="https://github.com/luozuda/temp">github小案例</a>
+					<a href="xiaomiseckill">小米闪购</a>
+				</div>
+				<div class="topbar-info">
+					<a href="https://www.aliyun.com/?utm_content=se_1000301881">阿里云</a>
+					<a href="http://www.dcloud.io/">DCLOUD</a>
+					<a href="https://cn.vuejs.org/v2/guide/">vue</a>
+				</div>
+			</div>
 		</div>
-	</div>
-</body>
+		<div class="content"></div>
+		<div class="bottom">
+			邮箱:luozuda@163.com
+		</div>
+	</body>
 
 </html>
