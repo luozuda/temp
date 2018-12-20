@@ -172,7 +172,11 @@ a {
 	margin-right: 15px;
 	padding: 26px 0 38px;
 	text-align: right;
+}
+
+.header-nav .nav-list .nav-category a{
 	font-size: 16px;
+	color: #333;
 }
 
 .header-nav .nav-list .nav-item {
