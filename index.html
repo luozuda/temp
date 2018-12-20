@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title></title>
+	<title>个人主页</title>
 	<style>
 		body,
 		ul,
@@ -20,7 +20,13 @@
 			list-style: none;
 		}
 
-		.container::after {
+		.container {
+			width: 1200px;
+			margin: 0 auto;
+		}
+
+		.container::after,
+		.clearfix::after {
 			display: block;
 			content: "";
 			clear: both;
@@ -28,20 +34,21 @@
 
 		/* topbar */
 		.topbar {
+			position: relative;
 			background-color: #333;
 			height: 40px;
-		}
-
-		.container {
-			width: 1200px;
-			margin: 0 auto;
 		}
 
 		.topbar-nav {
 			float: left;
 		}
 
-		.topbar-nav a {
+		.topbar-nav li {
+			position: relative;
+			float: left;
+		}
+
+		.topbar-nav li a {
 			margin: 0 10px;
 			display: inline-block;
 			height: 40px;
@@ -54,6 +61,34 @@
 			color: #efefef;
 		}
 
+		.topbar-nav a:hover~.item {
+			display: block;
+		}
+
+		.topbar-nav li .item {
+			position: absolute;
+			top: 40px;
+			width: 1200px;
+			height: 70px;
+			line-height: 70px;
+			background: #444;
+			z-index: 99;
+			display: none;
+		}
+
+		.topbar-nav li .item:hover {
+			display: block;
+		}
+
+		.topbar-nav li .item li a {
+			display: inline-block;
+			color: #aaa;
+		}
+
+		.topbar-nav li .item li a:hover {
+			color: #fff;
+		}
+
 		/* content */
 		.content {
 			background-color: rgb(189, 148, 148);
@@ -62,7 +97,7 @@
 			text-align: center;
 		}
 
-		.tabs{
+		.tabs {
 			display: flex;
 			justify-content: center;
 		}
@@ -79,7 +114,7 @@
 			background-color: rgb(228, 213, 204);
 		}
 
-		.tabs li a:hover{
+		.tabs li a:hover {
 			color: rgb(199, 141, 114);
 		}
 
@@ -99,9 +134,22 @@
 	<div class="topbar">
 		<div class="container">
 			<div class="topbar-nav">
-				<a href="xiaomiseckill">个人作品</a>
-				<a href="https://my.oschina.net/u/3986435/">个人博客</a>
-				<a href="https://github.com/luozuda/temp">github</a>
+				<ul class="clearfix">
+					<li>
+						<a>作品案例</a>
+						<ul class="item">
+							<li><a href="xiaomiseckill">小米闪购</a></li>
+							<li><a href="menu">二级下拉菜单</a></li>
+							<li><a href="ad">广告弹窗</a></li>
+							<li><a href="draw">转盘抽奖</a></li>
+							<li><a href="select">全国三级城市联动select选择</a></li>
+							<li><a href="banner">自动切换焦点图</a></li>
+							<li><a href="mouse">打地鼠游戏</a></li>
+						</ul>
+					</li>
+					<li><a href="https://my.oschina.net/u/3986435/">博客</a></li>
+					<li><a href="https://github.com/luozuda/temp">GIT</a></li>
+				</ul>
 			</div>
 		</div>
 	</div>
