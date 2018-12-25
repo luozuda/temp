@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>字符串中出现次数最多的字符</title>
+    <script>
+        var str = "23eqwr34q";
+        func(str);
+
+        //打印字符串中出现次数最多的字符和它的出现次数
+        function func(str) {
+            var obj = {};
+            var key;
+            for (var i = 0, len = str.length; i < len; i++) {
+                key = str[i];
+                obj[key] = obj[key] ? ++obj[key] : 1;
+            }
+
+            var maxKey = [];
+            var maxNum = -1;
+            for (key in obj) {
+                if (maxNum < obj[key]) {
+                    maxKey = [];
+                    maxKey.push(key);
+                    maxNum = obj[key];
+                } else if (maxNum == obj[key]) {
+                    maxKey.push(key);
+                }
+            }
+
+            for (key in maxKey) {
+                console.log("key:" + maxKey[key] + "num:" + maxNum)
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

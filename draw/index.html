@@ -1,91 +1,93 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="utf-8" />
-		<title>转盘抽奖</title>
-		<link rel="stylesheet" type="text/css" href="css/style.css" />
-	</head>
+<head>
+	<meta charset="utf-8" />
+	<title>转盘抽奖</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
 
-	<body>
-		<table id="table">
-			<tr>
-				<td class="select"><img src="img/4s75.png"/></td>
-				<td><img src="img/zhentou.jpg"/></td>
-				<td><img src="img/mix3-320.png"/></td>
-				<td><img src="img/xiaomiluyouqi4.png"/></td>
-				<td>再接再厉</td>
-			</tr>
-			<tr>
-				<td><img src="img/xiaomiluyouqi4.png"/></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td><img src="img/yundonxie.jpg"/></td>
-			</tr>
-			<tr>
-				<td><img src="img/bijiben32012.5.jpg"/></td>
-				<td></td>
-				<td id="start" class="start">开始</td>
-				<td></td>
-				<td><img src="img/zhentou.jpg"/></td>
-			</tr>
-			<tr>
-				<td>再接再厉</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td><img src="img/mix3-320.png"/></td>
-			</tr>
-			<tr>
-				<td><img src="img/yundonxie.jpg"/>	</td>
-				<td><img src="img/zhentou.jpg"/></td>
-				<td><img src="img/xiaomiluyouqi4.png"/></td>
-				<td>再接再厉</td>
-				<td><img src="img/yundonxie.jpg"/></td>
-			</tr>
-		</table>
+<body>
+	<table id="table">
+		<tr>
+			<td class="select"><img src="img/4s75.png" /></td>
+			<td><img src="img/zhentou.jpg" /></td>
+			<td><img src="img/mix3-320.png" /></td>
+			<td><img src="img/xiaomiluyouqi4.png" /></td>
+			<td>再接再厉</td>
+		</tr>
+		<tr>
+			<td><img src="img/xiaomiluyouqi4.png" /></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><img src="img/yundonxie.jpg" /></td>
+		</tr>
+		<tr>
+			<td><img src="img/bijiben32012.5.jpg" /></td>
+			<td></td>
+			<td id="start" class="start">开始</td>
+			<td></td>
+			<td><img src="img/zhentou.jpg" /></td>
+		</tr>
+		<tr>
+			<td>再接再厉</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><img src="img/mix3-320.png" /></td>
+		</tr>
+		<tr>
+			<td><img src="img/yundonxie.jpg" /> </td>
+			<td><img src="img/zhentou.jpg" /></td>
+			<td><img src="img/xiaomiluyouqi4.png" /></td>
+			<td>再接再厉</td>
+			<td><img src="img/yundonxie.jpg" /></td>
+		</tr>
+	</table>
 
-		<script type="text/javascript">
-			var tdList = document.getElementById("table").getElementsByTagName("td");
-			var tdID = 0;
-			var tdAry = [0, 1, 2, 3, 4, 9, 14, 19, 24, 23, 22, 21, 20, 15, 10, 5];
-			
-			function playFunc() {
-				//把上次的那个取消选中
-				tdList[tdAry[tdID]].className = "";
-				tdID = tdID + 1 >= tdAry.length ? 0 : tdID + 1;
-				//把这次的选中
-				tdList[tdAry[tdID]].className = "select";
-				
-				//显示选中的奖品
-				tdList[7].innerHTML=tdList[tdAry[tdID]].innerHTML;
+	<script type="text/javascript">
+		var tdList = document.getElementById("table").getElementsByTagName("td");
+		var tdID = 0;
+		var tdAry = [0, 1, 2, 3, 4, 9, 14, 19, 24, 23, 22, 21, 20, 15, 10, 5];
 
-				runNum++
-				if(runNum >= maxNum) {
-					clearInterval(run)
-					return
-				}
+		function playFunc() {
+			//把上次的那个取消选中
+			tdList[tdAry[tdID]].className = "";
+			tdID = tdID + 1 >= tdAry.length ? 0 : tdID + 1;
+			//把这次的选中
+			tdList[tdAry[tdID]].className = "select";
 
-				if(runNum == 6) {
-					clearInterval(run)
-					run = setInterval(playFunc, 20);
-				}
+			//显示选中的奖品
+			tdList[7].innerHTML = tdList[tdAry[tdID]].innerHTML;
 
-				if(runNum + 6 == maxNum) {
-					clearInterval(run)
-					run = setInterval(playFunc, 200);
-				}
-
+			runNum++
+			if (runNum >= maxNum) {
+				clearInterval(run)
+				return
 			}
 
-			var start = document.getElementById("start")
-			start.onclick = function() {
-				runNum = 0
-				maxNum = 16 * 3 + parseInt(Math.random() * 16)
+			if (runNum == 6) {
+				clearInterval(run)
+				run = setInterval(playFunc, 20);
+			}
+
+			if (runNum + 6 == maxNum) {
+				clearInterval(run)
 				run = setInterval(playFunc, 200);
 			}
-		</script>
-	</body>
+
+		}
+
+		var start = document.getElementById("start")
+		start.onclick = function () {
+			runNum = 0
+			maxNum = 16 * 3 + parseInt(Math.random() * 16)
+			run = setInterval(playFunc, 200);
+
+			start.onclick=null;
+		}
+	</script>
+</body>
 
 </html>

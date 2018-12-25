@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>任意数字转二进制</title>
+    <script>
+        //正整数转二进制  除二取余数排序，倒序
+        //10/2=5...0
+        //5/2=2...1
+        //2/2=1...0
+        //1/2=0...1
+        //10->1010
+        function func(num) {
+            var ary = [];
+            while (num) {
+                ary.push(num % 2);
+                num = parseInt(num / 2);
+            }
+            var str = ary.reverse().join(''); //数组倒序转字符串
+            return str;
+        }
+        console.log(func(10))
+
+
+        //小数转化为二进制  乘二取整，正序
+        // 0.3 * 2 = 0.6>>>0
+        // 0.6 * 2 = 1.2>>>1
+        // 0.2*2=0.4>>>0
+        // 0.4*2=0.8>>>0
+        // 0.8*2=1.6>>>1
+        // 0.6*2=1.2>>>1
+        // ...
+        //0.3->0.01001100110011...
+        function func2(num) {
+            var int = func(parseInt(num)) || 0; //整数部分转二进制
+            // console.log(int)
+
+            var n = num - parseInt(num); //取小数部分
+            var ary = [];
+            while (ary.length <=20) {
+                ary.push(parseInt(n * 2)); //乘二取整
+                n = n * 2 - parseInt(n * 2); //乘二后取小数部分
+            }
+            var dec = ary.join(''); //转为二进制的小数部分
+            // console.log(dec)
+            return int + "." + dec;
+        }
+        console.log(func2(10.4))
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

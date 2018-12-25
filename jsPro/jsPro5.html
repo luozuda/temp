@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>自定义全类型读取</title>
+    <script>
+        function myTypeof(arg) {
+            var type;
+            if (typeof (arg) != "object") {
+                type = typeof (arg); //非对象类型
+            } else {
+                type = Object.prototype.toString.call(arg); //系统自带的对象类型
+                if (type == "[object Object]") {
+                    type = "[object " + arg.constructor.name + "]"; //自定义类型
+                } else if (type == "[object Null]") {//null
+                    type = null;
+                }
+            }
+
+            return type;
+        }
+
+        function A() {};
+        console.log(myTypeof(1));
+        console.log(myTypeof('1'));
+        console.log(myTypeof(true));
+        console.log(myTypeof(undefined));
+        console.log(myTypeof(null));
+        console.log(myTypeof([]));
+        console.log(myTypeof(new Date));
+        console.log(myTypeof(new A));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
