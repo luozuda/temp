@@ -13,7 +13,7 @@
                 type = Object.prototype.toString.call(arg); //系统自带的对象类型
                 if (type == "[object Object]") {
                     type = "[object " + arg.constructor.name + "]"; //自定义类型
-                } else if (type == "[object Null]") {//null
+                } else if (type == "[object Null]") { //null
                     type = null;
                 }
             }
@@ -21,7 +21,7 @@
             return type;
         }
 
-        function A() {};
+        function A() {}; //自定义类型
         console.log(myTypeof(1));
         console.log(myTypeof('1'));
         console.log(myTypeof(true));

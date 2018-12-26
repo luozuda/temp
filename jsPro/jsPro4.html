@@ -6,14 +6,11 @@
     <title>自定义求和函数</title>
     <script>
         function add() {
-            console.log(arguments)
             var sum = 0;
             for (var i = 0, len = arguments.length; i < len; i++) {
-                console.log(parseFloat(arguments[i]))
                 sum += parseFloat(arguments[i]) || 0;
             }
-            sum = sum.toFixed(3) * 1000 / 1000;
-
+            sum = sum.toFixed(3) * 1000 / 1000; //toFixed() 方法可把 Number 四舍五入为指定小数位数的数字,返回值是字符串类型。
             return sum;
         }
         console.log(add(1, 2, 3));

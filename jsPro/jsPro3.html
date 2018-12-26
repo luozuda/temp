@@ -13,15 +13,15 @@
             var obj = {};
             var key;
             for (var i = 0, len = str.length; i < len; i++) {
-                key = str[i];
-                obj[key] = obj[key] ? ++obj[key] : 1;
+                key = str[i]; //出现的字符
+                obj[key] = obj[key] ? ++obj[key] : 1; //出现的次数
             }
 
-            var maxKey = [];
-            var maxNum = -1;
+            var maxKey = []; //存放出现最多次数的字符
+            var maxNum = -1; //出现最多的次数
             for (key in obj) {
                 if (maxNum < obj[key]) {
-                    maxKey = [];
+                    maxKey = []; //清空maxKey
                     maxKey.push(key);
                     maxNum = obj[key];
                 } else if (maxNum == obj[key]) {
