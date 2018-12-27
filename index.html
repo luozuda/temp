@@ -71,7 +71,7 @@
 			width: 1200px;
 			height: 70px;
 			line-height: 70px;
-			background: #444;
+			background: rgb(68, 68, 68);
 			z-index: 99;
 			display: none;
 		}
@@ -100,22 +100,39 @@
 		.tabs {
 			display: flex;
 			justify-content: center;
+			flex-wrap: wrap;
 		}
 
 		.tabs li {
 			float: left;
-			margin: 0 10px;
+			margin: 20px;
 			width: 220px;
 			height: 220px;
 			line-height: 220px;
 			text-align: center;
-			font-size: 30px;
 			border-radius: 50%;
 			background-color: rgb(228, 213, 204);
+			box-shadow: 10px 10px 5px #888888;
+			transform: rotate(8deg);
+		}
+
+		.tabs li:hover {
+			background-color: rgb(182, 99, 47);
+			transform: rotate(0deg);
+			transition: background-color 0.5s;
+		}
+
+		.tabs li a {
+			display: block;
+			width: 220px;
+			height: 220px;
+			font-size: 30px;
+			border-radius: 50%;
+			color: rgb(77, 177, 147);
 		}
 
 		.tabs li a:hover {
-			color: rgb(199, 141, 114);
+			color: rgb(214, 192, 182);
 		}
 
 		.bottom {
@@ -148,15 +165,26 @@
 						</ul>
 					</li>
 					<li><a href="https://my.oschina.net/u/3986435/">博客</a></li>
-					<li><a href="https://github.com/luozuda/temp">GIT</a></li>
+					<li><a href="https://github.com/luozuda/temp">GITHUB</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
 	<div class="content">
 		<div class="container">
-			<h1>链接</h1>
 			<ul class="tabs">
+				<li>
+					<a href="http://www.w3school.com.cn/">w3school</a>
+				</li>
+				<li>
+					<a href="http://www.runoob.com/">菜鸟教程</a>
+				</li>
+				<li>
+					<a href="http://www.dcloud.io/">DCLOUD</a>
+				</li>
+				<li>
+					<a href="https://cn.vuejs.org/v2/guide/">vue</a>
+				</li>
 				<li>
 					<a href="https://www.aliyun.com/">阿里云</a>
 				</li>
@@ -164,10 +192,10 @@
 					<a href="https://cloud.tencent.com/">腾讯云</a>
 				</li>
 				<li>
-					<a href="http://www.dcloud.io/">DCLOUD</a>
+					<a href="https://ke.qq.com/">腾讯课堂</a>
 				</li>
 				<li>
-					<a href="https://cn.vuejs.org/v2/guide/">vue</a>
+					<a href="https://mp.weixin.qq.com/">微信公众平台</a>
 				</li>
 			</ul>
 		</div>
