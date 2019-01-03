@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>排队系统</title>
+    <script>
+        var vipNum = 0;
+        var norNum = 0;
+
+        function getPerson() {
+            if (Math.random() > 0.5) {
+                return "V" + vipNum++;
+            } else {
+                return "N" + norNum++;
+            }
+        }
+
+        function addList(person) {
+            if (person[0] == "V") {
+                for (var i = 0; i < 6; i++) {
+                    if (ary[i][0] == "N") {
+                        //把新的vip用户插队到普通用户前面
+                        ary.splice(i, 0, person);
+                        return;
+                    }
+                }
+            }
+            ary.push(person);
+        }
+
+        var ary = [];
+        for (var i = 0; i < 6; i++) {
+            addList(getPerson())
+        }
+        console.log(ary.toString())
+
+        setInterval(getOne, 3000);
+
+        function getOne() {
+            //柜台 叫第一人去
+            var firstPerson = ary.shift();
+            console.log("叫号:" + firstPerson)
+            //新人到了
+            var newPerson = getPerson();
+            console.log("新人:" + newPerson)
+            //加到队列里面去
+            addList(newPerson);
+            console.log(ary.toString())
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
