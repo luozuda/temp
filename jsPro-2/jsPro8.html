@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>对象的深度克隆</title>
+    <script>
+        var obj = {
+            a: 1,
+            b: false,
+            c: {
+                a: 2,
+                b: true,
+                c: {
+                    a: 3,
+                    b: false
+                }
+            },
+            d: [1, 2, 3, [1, 2, 3]]
+        };
+        var a = clone(obj);
+
+        function clone(obj) {
+            //数组
+            if (obj instanceof Array) {
+                var ary = [];
+                for (var i = 0; i < obj.length; i++) {
+                    ary[i] = clone(obj[i]); //递归
+                }
+                return ary;
+            }
+
+            //对象
+            if (obj instanceof Object) {
+                var newObj = {};
+                for (key in obj) {
+                    newObj[key] = clone(obj[key]); //递归
+                }
+                return newObj;
+            }
+
+            return obj;
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

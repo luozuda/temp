@@ -8,8 +8,7 @@
         //判断是否是质数
         function isPrime(num) {
             if (num <= 1 || num % 2 == 0) {
-                if (num == 2) return true;
-                return false;
+                return num == 2 ? true : false;
             }
             var n = 3;
             while (n < num) {
@@ -20,7 +19,7 @@
         }
 
         for (var i = 0; i < 10000; i++) {
-            if (isPrime(i)){
+            if (isPrime(i)) {
                 console.log(i)
             }
         }

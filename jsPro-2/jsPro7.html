@@ -21,7 +21,7 @@
                 for (var i = 0; i < 6; i++) {
                     if (ary[i][0] == "N") {
                         //把新的vip用户插队到普通用户前面
-                        ary.splice(i, 0, person);
+                        ary.splice(i, 0, person); //splice() 方法向/从数组中添加/删除项目，然后返回被删除的项目
                         return;
                     }
                 }
@@ -31,7 +31,7 @@
 
         var ary = [];
         for (var i = 0; i < 6; i++) {
-            addList(getPerson())
+            addList(getPerson());
         }
         console.log(ary.toString())
 
@@ -39,7 +39,7 @@
 
         function getOne() {
             //柜台 叫第一人去
-            var firstPerson = ary.shift();
+            var firstPerson = ary.shift(); //shift() 方法用于把数组的第一个元素从其中删除，并返回第一个元素的值
             console.log("叫号:" + firstPerson)
             //新人到了
             var newPerson = getPerson();
