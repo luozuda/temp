@@ -2,207 +2,250 @@
 <html>
 
 <head>
-	<meta charset="utf-8" />
-	<title>个人主页</title>
-	<style>
-		body,
-		ul,
-		li {
-			margin: 0;
-			padding: 0;
-		}
-
-		a {
-			text-decoration: none;
-		}
-
-		ul {
-			list-style: none;
-		}
-
-		.container {
-			width: 1200px;
-			margin: 0 auto;
-		}
-
-		.container::after,
-		.clearfix::after {
-			display: block;
-			content: "";
-			clear: both;
-		}
-
-		/* topbar */
-		.topbar {
-			position: relative;
-			background-color: #333;
-			height: 40px;
-		}
-
-		.topbar-nav {
-			float: left;
-		}
-
-		.topbar-nav li {
-			position: relative;
-			float: left;
-		}
-
-		.topbar-nav li a {
-			margin: 0 10px;
-			display: inline-block;
-			height: 40px;
-			line-height: 40px;
-			text-align: center;
-			color: #aaa;
-		}
-
-		.topbar-nav a:hover {
-			color: #efefef;
-		}
-
-		.topbar-nav a:hover~.item {
-			display: block;
-		}
-
-		.topbar-nav li .item {
-			position: absolute;
-			top: 40px;
-			width: 1200px;
-			height: 70px;
-			line-height: 70px;
-			background: rgb(68, 68, 68);
-			z-index: 99;
-			display: none;
-		}
-
-		.topbar-nav li .item:hover {
-			display: block;
-		}
-
-		.topbar-nav li .item li a {
-			display: inline-block;
-			color: #aaa;
-		}
-
-		.topbar-nav li .item li a:hover {
-			color: #fff;
-		}
-
-		/* content */
-		.content {
-			background-color: rgb(189, 148, 148);
-			height: 800px;
-			padding: 20px;
-			text-align: center;
-		}
-
-		.tabs {
-			display: flex;
-			justify-content: center;
-			flex-wrap: wrap;
-		}
-
-		.tabs li {
-			float: left;
-			margin: 20px;
-			width: 220px;
-			height: 220px;
-			line-height: 220px;
-			text-align: center;
-			border-radius: 50%;
-			background-color: rgb(228, 213, 204);
-			box-shadow: 10px 10px 5px #888888;
-			transform: rotate(8deg);
-		}
-
-		.tabs li:hover {
-			background-color: rgb(182, 99, 47);
-			transform: rotate(0deg);
-			transition: background-color 0.5s;
-		}
-
-		.tabs li a {
-			display: block;
-			width: 220px;
-			height: 220px;
-			font-size: 30px;
-			border-radius: 50%;
-			color: rgb(77, 177, 147);
-		}
-
-		.tabs li a:hover {
-			color: rgb(214, 192, 182);
-		}
-
-		.bottom {
-			width: 100%;
-			height: 40px;
-			line-height: 40px;
-			font-size: 12px;
-			text-align: center;
-			background-color: #333;
-			color: #fff;
-		}
-	</style>
+    <meta charset="utf-8" />
+    <title>个人主页</title>
+    <style>
+        body,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .container::after,
+        .clearfix::after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+        /* topbar */
+        
+        .topbar {
+            position: relative;
+            background-color: #333;
+            height: 40px;
+        }
+        
+        .topbar-nav {
+            float: left;
+        }
+        
+        .topbar-nav li {
+            position: relative;
+            float: left;
+        }
+        
+        .topbar-nav li a {
+            margin: 0 10px;
+            display: inline-block;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: #aaa;
+        }
+        
+        .topbar-nav a:hover {
+            color: #efefef;
+        }
+        
+        .topbar-nav a:hover~.item {
+            display: block;
+        }
+        
+        .topbar-nav li .item {
+            position: absolute;
+            top: 40px;
+            width: 1200px;
+            height: 70px;
+            line-height: 70px;
+            background: rgb(68, 68, 68);
+            z-index: 99;
+            display: none;
+        }
+        
+        .topbar-nav li .item:hover {
+            display: block;
+        }
+        
+        .topbar-nav li .item li a {
+            display: inline-block;
+            color: #aaa;
+        }
+        
+        .topbar-nav li .item li a:hover {
+            color: #fff;
+        }
+        /* content */
+        
+        .content {
+            background-color: rgb(189, 148, 148);
+            min-height: 700px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .demo {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+        
+        .demo li {
+            flex-grow: 1;
+            margin: 10px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            border-radius: 20px;
+            background-color: rgb(196, 92, 118);
+            box-shadow: 0px 10px 5px #888888;
+        }
+        
+        .demo li a {
+            display: block;
+            width: 100%;
+            height: 100px;
+            color: #efefef;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+        
+        .tabs li {
+            margin: 10px;
+            width: 130px;
+            height: 130px;
+            line-height: 130px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: rgb(228, 213, 204);
+            box-shadow: 10px 10px 5px #888888;
+            transform: rotate(8deg);
+        }
+        
+        .tabs li:hover {
+            transform: rotate(0deg);
+            transition: transform 0.5s;
+        }
+        
+        .tabs li a {
+            display: block;
+            width: 130px;
+            height: 130px;
+            font-size: 20px;
+            border-radius: 50%;
+            color: rgb(77, 177, 147);
+        }
+        
+        .bottom {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            font-size: 12px;
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
 </head>
 
 <body>
-	<div class="topbar">
-		<div class="container">
-			<div class="topbar-nav">
-				<ul class="clearfix">
-					<li>
-						<a>作品案例</a>
-						<ul class="item">
-							<li><a href="xiaomiseckill">小米闪购</a></li>
-							<li><a href="menu">二级下拉菜单</a></li>
-							<li><a href="ad">广告弹窗</a></li>
-							<li><a href="draw">转盘抽奖</a></li>
-							<li><a href="select">全国三级城市联动select选择</a></li>
-							<li><a href="banner">自动切换焦点图</a></li>
-							<li><a href="mouse">打地鼠游戏</a></li>
-						</ul>
-					</li>
-					<li><a href="https://my.oschina.net/u/3986435/">博客</a></li>
-					<li><a href="https://github.com/luozuda/temp">GITHUB</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div class="content">
-		<div class="container">
-			<ul class="tabs">
-				<li>
-					<a href="http://www.w3school.com.cn/">w3school</a>
-				</li>
-				<li>
-					<a href="http://www.runoob.com/">菜鸟教程</a>
-				</li>
-				<li>
-					<a href="http://www.dcloud.io/">DCLOUD</a>
-				</li>
-				<li>
-					<a href="https://cn.vuejs.org/v2/guide/">vue</a>
-				</li>
-				<li>
-					<a href="https://www.aliyun.com/">阿里云</a>
-				</li>
-				<li>
-					<a href="https://cloud.tencent.com/">腾讯云</a>
-				</li>
-				<li>
-					<a href="https://ke.qq.com/">腾讯课堂</a>
-				</li>
-				<li>
-					<a href="https://mp.weixin.qq.com/">微信公众平台</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-	<div class="bottom">
-		邮箱:luozuda@163.com
-	</div>
+    <div class="topbar">
+        <div class="container">
+            <div class="topbar-nav">
+                <ul class="clearfix">
+                    <li>
+                        <a>案例</a>
+                        <ul class="item">
+                            <li><a href="xiaomiseckill">小米闪购</a></li>
+                            <li><a href="menu">二级下拉菜单</a></li>
+                            <li><a href="ad">广告弹窗</a></li>
+                            <li><a href="draw">转盘抽奖</a></li>
+                            <li><a href="select">全国三级城市联动select选择</a></li>
+                            <li><a href="banner">自动切换焦点图</a></li>
+                            <li><a href="mouse">打地鼠游戏</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="https://my.oschina.net/u/3986435/">博客</a></li>
+                    <li><a href="https://github.com/luozuda/temp">GITHUB</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="container">
+            <h1>案例</h1>
+            <ul class="demo">
+                <li>
+                    <a href="xiaomiseckill">小米闪购</a>
+                </li>
+                <li>
+                    <a href="menu">二级下拉菜单</a>
+                </li>
+                <li>
+                    <a href="ad">广告弹窗</a>
+                </li>
+                <li>
+                    <a href="draw">转盘抽奖</a>
+                </li>
+                <li>
+                    <a href="select">全国三级城市联动select选择</a>
+                </li>
+                <li>
+                    <a href="banner">自动切换焦点图</a>
+                </li>
+                <li>
+                    <a href="mouse">打地鼠游戏</a>
+                </li>
+            </ul>
+            <h1>知识链接</h1>
+            <ul class="tabs">
+                <li>
+                    <a href="http://www.w3school.com.cn/">w3school</a>
+                </li>
+                <li>
+                    <a href="http://www.runoob.com/">菜鸟教程</a>
+                </li>
+                <li>
+                    <a href="http://www.dcloud.io/">DCLOUD</a>
+                </li>
+                <li>
+                    <a href="https://cn.vuejs.org/v2/guide/">vue</a>
+                </li>
+                <li>
+                    <a href="https://www.aliyun.com/">阿里云</a>
+                </li>
+                <li>
+                    <a href="https://cloud.tencent.com/">腾讯云</a>
+                </li>
+                <li>
+                    <a href="https://ke.qq.com/">腾讯课堂</a>
+                </li>
+                <li>
+                    <a href="https://mp.weixin.qq.com/">微信公众平台</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="bottom">
+        邮箱:luozuda@163.com
+    </div>
 </body>
 
 </html>
