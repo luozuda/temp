@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>个人主页</title>
     <style>
         body,
@@ -11,153 +13,159 @@
             margin: 0;
             padding: 0;
         }
-        
+
         a {
             text-decoration: none;
         }
-        
+
         ul {
             list-style: none;
         }
-        
+
         .container {
-            width: 1200px;
+            width: 80vw;
             margin: 0 auto;
         }
-        
+
         .container::after,
         .clearfix::after {
             display: block;
             content: "";
             clear: both;
         }
-        /* topbar */
-        
+
+        /* 头部 */
+
         .topbar {
             position: relative;
             background-color: #333;
-            height: 40px;
+            height: 2.5rem;
         }
-        
+
         .topbar-nav {
             float: left;
         }
-        
+
         .topbar-nav li {
             position: relative;
             float: left;
         }
-        
+
         .topbar-nav li a {
-            margin: 0 10px;
+            margin: 0 0.6rem;
             display: inline-block;
-            height: 40px;
-            line-height: 40px;
+            height: 2.5rem;
+            line-height: 2.5rem;
             text-align: center;
             color: #aaa;
         }
-        
+
         .topbar-nav a:hover {
             color: #efefef;
         }
-        
+
         .topbar-nav a:hover~.item {
             display: block;
         }
-        
+
         .topbar-nav li .item {
             position: absolute;
-            top: 40px;
-            width: 1200px;
-            height: 70px;
-            line-height: 70px;
-            background: rgb(68, 68, 68);
+            top: 2.5rem;
+            width: 14rem;
+            background: #555;
             z-index: 99;
             display: none;
         }
-        
+
         .topbar-nav li .item:hover {
             display: block;
         }
-        
+
         .topbar-nav li .item li a {
-            display: inline-block;
             color: #aaa;
         }
-        
+
         .topbar-nav li .item li a:hover {
             color: #fff;
         }
-        /* content */
-        
+
+        /* 主体 */
+
         .content {
             background-color: rgb(189, 148, 148);
-            min-height: 700px;
-            padding: 20px;
+            min-height: 90vh;
+            padding: 1.2rem;
             text-align: center;
         }
-        
+
+        /* 案例 */
         .demo {
             display: flex;
             justify-content: flex-start;
             flex-wrap: wrap;
         }
-        
+
         .demo li {
             flex-grow: 1;
-            margin: 10px;
-            height: 100px;
-            line-height: 100px;
+            margin: 0.6rem;
+            height: 8rem;
+            line-height: 8rem;
             text-align: center;
-            border-radius: 20px;
-            background-color: rgb(196, 92, 118);
-            box-shadow: 0px 10px 5px #888888;
+            border-radius: 10px;
+            background-color: rgb(165, 113, 158);
+            transition: 0.5s;
         }
-        
+
+        .demo li:hover {
+            box-shadow: 0px 5px 2px #888888;
+            transition: box-shadow 0.5s;
+        }
+
         .demo li a {
             display: block;
             width: 100%;
-            height: 100px;
+            height: 100%;
             color: #efefef;
         }
-        
-        .tabs {
+
+        /* 链接 */
+        .link {
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-around;
             flex-wrap: wrap;
         }
-        
-        .tabs li {
-            margin: 10px;
-            width: 130px;
-            height: 130px;
-            line-height: 130px;
+
+        .link li {
+            margin: 0.4rem;
+            width: 6rem;
+            height: 6rem;
+            line-height: 6rem;
             text-align: center;
             border-radius: 50%;
-            background-color: rgb(228, 213, 204);
-            box-shadow: 10px 10px 5px #888888;
-            transform: rotate(8deg);
+            background: radial-gradient(circle, rgb(228, 213, 204), transparent);
+            transition: 0.5s;
         }
-        
-        .tabs li:hover {
-            transform: rotate(0deg);
-            transition: transform 0.5s;
+
+        .link li:hover {
+            box-shadow: 0px 10px 2px #888888;
+            transition: box-shadow 0.5s;
         }
-        
-        .tabs li a {
+
+        .link li a {
             display: block;
-            width: 130px;
-            height: 130px;
-            font-size: 20px;
+            width: 100%;
+            height: 100%;
+            font-size: 0.8rem;
             border-radius: 50%;
             color: rgb(77, 177, 147);
         }
-        
+
+        /* 底部 */
         .bottom {
-            width: 100%;
-            height: 40px;
-            line-height: 40px;
-            font-size: 12px;
+            width: 100vw;
+            height: 3.4rem;
+            line-height: 3.4rem;
+            font-size: 0.8rem;
             text-align: center;
             background-color: #333;
             color: #fff;
@@ -215,7 +223,7 @@
                 </li>
             </ul>
             <h1>知识链接</h1>
-            <ul class="tabs">
+            <ul class="link">
                 <li>
                     <a href="http://www.w3school.com.cn/">w3school</a>
                 </li>
