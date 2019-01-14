@@ -17,6 +17,7 @@ a {
     background: linear-gradient(45deg, #020031 0, #6d3353 100%);
     padding: 60px 0 80px;
     margin-bottom: 0;
+    z-index: 99;
 }
 
 .masthead::after {
@@ -26,6 +27,7 @@ a {
     left: 0;
     bottom: 0;
     right: 0;
+    z-index: -1;
     background-image: url(../img/bs-docs-masthead-pattern.png);
     background-position: center;
     opacity: 0.5;
@@ -47,6 +49,10 @@ a {
 
 .masthead ul li a {
     color: rgba(255, 255, 255, 0.5);
+}
+
+.masthead ul li a:hover{
+    color: #fff;
 }
 
 .bc-social {
