@@ -22,6 +22,11 @@
             list-style: none;
         }
 
+        h1 {
+            text-shadow: 2px 2px 2px #888888;
+            /* animation: change 2s linear infinite; */
+        }
+
         .container {
             width: 80vw;
             margin: 0 auto;
@@ -92,7 +97,7 @@
         /* 主体 */
 
         .content {
-            background-color: rgb(125, 148, 197);
+            background-color: rgb(168, 151, 136);
             min-height: 90vh;
             padding: 1.2rem;
             text-align: center;
@@ -112,13 +117,13 @@
             height: 10rem;
             line-height: 10rem;
             border-radius: 10px;
-            background-color: rgb(46, 36, 46);
+            background-color: rgb(151, 58, 63);
             transition: 0.1s;
         }
 
         .demo li:hover {
             box-shadow: 0px 8px 5px #888888;
-            transform-origin: 50% 0; 
+            transform-origin: 50% 0;
             transform: rotateX(10deg);
         }
 
@@ -126,7 +131,7 @@
             display: block;
             width: 100%;
             height: 100%;
-            color: #5ac943;
+            color: #c8d362;
         }
 
         /* 链接 */
@@ -165,6 +170,20 @@
             text-align: center;
             background-color: #333;
             color: #fff;
+        }
+
+        @keyframes change {
+            from {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            to {
+                transform: scale(1);
+            }
         }
     </style>
 </head>
