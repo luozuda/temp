@@ -1,0 +1,147 @@
+body,
+ul,
+li,
+a {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+}
+
+.wrapper {
+    width: 600px;
+    margin: 50px auto 0;
+}
+
+.main {
+    width: 100%;
+    text-align: center;
+}
+
+.main img {
+    width: 200px;
+    height: 200px;
+    border: 10px solid rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+.tool {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* position: relative; */
+    width: 100%;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.5);
+    margin-top: 100px;
+    border-radius: 20px;
+}
+
+.tool .btn {
+    display: flex;
+    justify-content: space-around;
+    /* position: absolute;
+    left: 10px; */
+    width: 120px;
+    height: 30px;
+}
+
+.tool i {
+    color: #fff;
+    font-size: 30px;
+}
+
+/* .tool>div {
+    top: 50%;
+    margin-top: -15px;
+} */
+
+.icon-pause {
+    display: none;
+}
+
+.progress {
+    display: flex;
+    justify-content: space-between;
+    /* position: absolute;
+    left: 50%;
+    margin-left: -200px; */
+    width: 400px;
+    height: 30px;
+    /* background-color: #ccc; */
+}
+
+.current-time,
+.duration-time {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+}
+
+.pro-box {
+    position: relative;
+    width: 250px;
+    height: 30px;
+}
+
+.pro-bg {
+    position: absolute;
+    top: 50%;
+    margin-top: -1px;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.pro-active {
+    position: absolute;
+    top: 50%;
+    margin-top: -1px;
+    width: 250px;
+    height: 2px;
+    background-color: #fff;
+}
+
+.radio-box {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -10px;
+    margin-right: -10px; 
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.radio {
+    display: inline-block;
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    margin-top: -4px;
+    margin-right: -4px;
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.volume {
+    width: 30px;
+}
