@@ -64,29 +64,18 @@
             color: #efefef;
         }
 
-        .topbar-nav a:hover~.item {
-            display: block;
+        .topbar-nav li:hover > .item {
+            display: flex;
+            flex-direction: column;
         }
 
         .topbar-nav li .item {
-            position: absolute;
-            top: 2.5rem;
-            width: 14rem;
-            background: rgba(35, 41, 5, 0.8);
-            z-index: 99;
             display: none;
-        }
-
-        .topbar-nav li .item:hover {
-            display: block;
-        }
-
-        .topbar-nav li .item li a {
-            color: #aaa;
-        }
-
-        .topbar-nav li .item li a:hover {
-            color: #fff;
+            position: absolute;
+            z-index: 99;
+            top: 2.5rem;
+            width: 12rem;
+            background: rgba(0, 0, 0, 0.8);
         }
 
         /* 主体 */
