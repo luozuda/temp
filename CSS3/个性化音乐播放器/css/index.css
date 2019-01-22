@@ -23,7 +23,7 @@ body {
 }
 
 .wrapper {
-    width: 600px;
+    width: 800px;
     margin: 50px auto 0;
 }
 
@@ -70,10 +70,6 @@ body {
     margin-top: -15px;
 } */
 
-.icon-pause {
-    display: none;
-}
-
 /* progress */
 .progress {
     display: flex;
@@ -81,14 +77,14 @@ body {
     /* position: absolute;
     left: 50%;
     margin-left: -200px; */
-    width: 380px;
+    width: 400px;
     height: 30px;
     /* background-color: #ccc; */
 }
 
 .current-time,
 .duration-time {
-    width: 60px;
+    width: 80px;
     height: 30px;
     text-align: center;
     line-height: 30px;
@@ -97,7 +93,7 @@ body {
 
 .pro-box {
     position: relative;
-    width: 250px;
+    width: 240px;
     height: 30px;
 }
 
@@ -114,12 +110,12 @@ body {
     position: absolute;
     top: 50%;
     margin-top: -1px;
-    width: 250px;
+    width: 0;
     height: 2px;
     background-color: #fff;
 }
 
-.pro-active .radio-box {
+.pro-active .pro-radio-box {
     position: absolute;
     top: 0;
     right: 0;
@@ -131,7 +127,7 @@ body {
     /* background-color: rgba(0,0,0,0.5); */
 }
 
-.pro-active .radio-box .radio {
+.pro-active .pro-radio-box .radio {
     display: inline-block;
     position: absolute;
     right: 50%;
@@ -152,7 +148,7 @@ body {
     /* background: red; */
 }
 
-.volume:hover > .vol-box{
+.volume:hover>.vol-box {
     display: block;
 }
 
@@ -187,7 +183,7 @@ body {
     background-color: #fff;
 }
 
-.vol-active .radio-box {
+.vol-active .vol-radio-box {
     position: absolute;
     top: 0;
     left: 0;
@@ -199,7 +195,7 @@ body {
     cursor: pointer;
 }
 
-.vol-active .radio-box .radio {
+.vol-active .vol-radio-box .radio {
     display: inline-block;
     position: absolute;
     top: 50%;
