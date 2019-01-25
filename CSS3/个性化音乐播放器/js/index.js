@@ -51,7 +51,7 @@ init();
 function bindEvent() {
     oAudio.onloadedmetadata = function () {
         name = decodeURI(oAudio.currentSrc);
-        oCurrentSrc.innerHTML = name.substring(name.lastIndexOf("/") + 1,name.lastIndexOf("."));
+        oCurrentSrc.innerHTML = name.substring(name.lastIndexOf("/") + 1, name.lastIndexOf("."));
 
         duration = oAudio.duration;
         oDurationTime.innerHTML = conversion(duration);
@@ -166,12 +166,14 @@ function musicPause() {
     oAudio.pause();
     oIsPlay.className = "iconfont icon-bofang";
     clearInterval(timer);
+    oImg.style.animationPlayState = "paused";
 }
 
 function movePro() {
     var currentTime = oAudio.currentTime;
     oCurrentTime.innerHTML = conversion(currentTime);
     oProActive.style.width = currentTime / duration * bgWidth + radioRadius + "px";
+    oImg.style.animation = "rotate 20s linear infinite";
 }
 
 function changeMusic(num) {
@@ -186,5 +188,6 @@ function changeMusic(num) {
     oAudio.load();
     name = decodeURI(oAudio.src);
     oCurrentSrc.innerHTML = name.substring(name.lastIndexOf("/") + 1);
+    oImg.style.animation = "";
     musicPlay();
 }
