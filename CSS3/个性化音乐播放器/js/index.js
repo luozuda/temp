@@ -1,5 +1,4 @@
 var oAudio = document.getElementsByTagName("audio")[0],
-    oCurrentSrc = document.getElementById("currentSrc"),
     oCurrentTime = document.getElementsByClassName("current-time")[0],
     oDurationTime = document.getElementsByClassName("duration-time")[0],
 
@@ -20,6 +19,7 @@ var oAudio = document.getElementsByTagName("audio")[0],
     oVolActive = document.getElementsByClassName("vol-active")[0],
     oVolRadioBox = document.getElementsByClassName("vol-radio-box")[0],
 
+    oCurrentSrc = document.getElementById("currentSrc"),
     oImg = document.getElementsByTagName("img")[0];
 
 var timer,
@@ -40,32 +40,120 @@ var source = [{
     src: "./source/薛之谦 - 演员.mp3"
 }];
 var len = source.length;
-oAudio.src = source[index].src;
 
-//ondurationchange
-window.onload = function () {
-    name = decodeURI(oAudio.currentSrc);
-    oCurrentSrc.innerHTML = name.substring(name.lastIndexOf("/") + 1);
-
+function init() {
+    bindEvent();
+    oAudio.src = source[index].src;
     oCurrentTime.innerHTML = conversion(0);
-    duration = oAudio.duration;
-    oDurationTime.innerHTML = conversion(duration);
 }
+init();
 
-oAudio.ondurationchange = reset;
+function bindEvent() {
+    oAudio.onloadedmetadata = function () {
+        name = decodeURI(oAudio.currentSrc);
+        oCurrentSrc.innerHTML = name.substring(name.lastIndexOf("/") + 1,name.lastIndexOf("."));
+
+        duration = oAudio.duration;
+        oDurationTime.innerHTML = conversion(duration);
+    }
+
+    oIsPlay.onclick = function () {
+        if (oAudio.paused) {
+            musicPlay();
+        } else {
+            musicPause();
+        }
+    }
+
+    oAudio.onended = function () {
+        changeMusic(1);
+    }
+
+    oProRadioBox.onmousedown = function () {
+        clearInterval(timer);
+        var c = oAudio.currentTime;
+
+        document.body.onmousemove = function (e) {
+            var newWidth = e.clientX - oProBox.getBoundingClientRect().left;
+            if (newWidth < radioRadius) {
+                newWidth = radioRadius;
+            } else if (newWidth > bgOffsetWidth) {
+                newWidth = bgOffsetWidth;
+            }
+            oProActive.style.width = newWidth + "px";
+            c = (newWidth - radioRadius) / bgWidth * duration;
+            oCurrentTime.innerHTML = conversion(c);
+        }
+
+        document.body.onmouseup = function () {
+            document.body.onmousemove = null;
+            document.body.onmouseup = null;
+            oAudio.currentTime = c;
+            musicPlay();
+        }
+    }
+
+    oIsMuted.onclick = function () {
+        if (oAudio.muted) {
+            oAudio.muted = false;
+            oIsMuted.className = "iconfont icon-laba";
+            oVolActive.style.height = bgOffsetHeight + "px";
+            oAudio.volume = 1;
+        } else {
+            oAudio.muted = true;
+            oIsMuted.className = "iconfont icon-jingyin";
+            oVolActive.style.height = radioRadius + "px";
+        }
+    }
+
+    oVolRadioBox.onmousedown = function () {
+        var v;
+        oVolBox.onmousemove = function (e) {
+            var newHeight = oVolBg.getBoundingClientRect().bottom - e.clientY;
+            if (newHeight < radioRadius) {
+                newHeight = radioRadius;
+            } else if (newHeight > bgOffsetHeight) {
+                newHeight = bgOffsetHeight;
+            }
+            oVolActive.style.height = newHeight + "px";
+            v = (newHeight - radioRadius) / bgHeight;
+            if (v == 0) {
+                oAudio.muted = true;
+                oIsMuted.className = "iconfont icon-jingyin";
+                oAudio.volume = 0;
+            } else if (v > 0 && v <= 1) {
+                oAudio.muted = false;
+                oIsMuted.className = "iconfont icon-laba";
+                oAudio.volume = v;
+            }
+        }
+
+        oVolBox.onmouseleave = function () {
+            oVolBox.onmousemove = null;
+            oVolBox.onmouseup = null;
+            oVolBox.onmouseleave = null;
+        }
+
+        oVolBox.onmouseup = function () {
+            oVolBox.onmousemove = null;
+            oVolBox.onmouseup = null;
+            oVolBox.onmouseleave = null;
+        }
+    }
+
+    oPrev.onclick = function () {
+        changeMusic(-1);
+    }
+
+    oNext.onclick = function () {
+        changeMusic(1);
+    }
+}
 
 function conversion(num) {
     var sec = parseInt(num % 60) < 10 ? "0" + parseInt(num % 60) : parseInt(num % 60);
     var min = parseInt(num / 60) < 10 ? "0" + parseInt(num / 60) : parseInt(num / 60);
     return min + ":" + sec;
-}
-
-oIsPlay.onclick = function () {
-    if (oAudio.paused) {
-        musicPlay();
-    } else {
-        musicPause();
-    }
 }
 
 function musicPlay() {
@@ -86,122 +174,17 @@ function movePro() {
     oProActive.style.width = currentTime / duration * bgWidth + radioRadius + "px";
 }
 
-oAudio.onended = function () {
-    nextMusic();
-}
-
-oProRadioBox.onmousedown = function () {
-    clearInterval(timer);
-    var c = oAudio.currentTime;
-    document.body.onmousemove = function (e) {
-        var newWidth = e.clientX - oProBox.getBoundingClientRect().left;
-        if (newWidth < radioRadius) {
-            newWidth = radioRadius;
-        } else if (newWidth > bgOffsetWidth) {
-            newWidth = bgOffsetWidth;
-        }
-        oProActive.style.width = newWidth + "px";
-        c = (newWidth - radioRadius) / bgWidth * duration;
-        oCurrentTime.innerHTML = conversion(c);
-    }
-    document.body.onmouseup = function () {
-        document.body.onmousemove = null;
-        document.body.onmouseup = null;
-        oAudio.currentTime = c;
-        musicPlay();
-    }
-}
-
-
-oIsMuted.onclick = function () {
-    if (oAudio.muted) {
-        oAudio.muted = false;
-        oIsMuted.className = "iconfont icon-laba";
-        oVolActive.style.height = bgOffsetHeight + "px";
-        oAudio.volume = 1;
-    } else {
-        oAudio.muted = true;
-        oIsMuted.className = "iconfont icon-jingyin";
-        oVolActive.style.height = radioRadius + "px";
-    }
-}
-
-oVolRadioBox.onmousedown = function () {
-    var v;
-    oVolBox.onmousemove = function (e) {
-        var newHeight = oVolBg.getBoundingClientRect().bottom - e.clientY;
-        if (newHeight < radioRadius) {
-            newHeight = radioRadius;
-        } else if (newHeight > bgOffsetHeight) {
-            newHeight = bgOffsetHeight;
-        }
-        oVolActive.style.height = newHeight + "px";
-        v = (newHeight - radioRadius) / bgHeight;
-        if (v == 0) {
-            oAudio.muted = true;
-            oIsMuted.className = "iconfont icon-jingyin";
-            oAudio.volume = 0;
-        } else if (v > 0 && v <= 1) {
-            oAudio.muted = false;
-            oIsMuted.className = "iconfont icon-laba";
-            oAudio.volume = v;
-        }
-    }
-
-    oVolBox.onmouseleave = function () {
-        oVolBox.onmousemove = null;
-        oVolBox.onmouseup = null;
-        oVolBox.onmouseleave = null;
-    }
-
-    oVolBox.onmouseup = function () {
-        oVolBox.onmousemove = null;
-        oVolBox.onmouseup = null;
-        oVolBox.onmouseleave = null;
-    }
-}
-
-oPrev.onclick = function () {
+function changeMusic(num) {
     musicPause();
-
-    //切换歌曲
-    index--;
+    index += num;
     if (index < 0) {
         index = len - 1;
     } else if (index >= len) {
         index = 0;
     }
     oAudio.src = source[index].src;
+    oAudio.load();
     name = decodeURI(oAudio.src);
     oCurrentSrc.innerHTML = name.substring(name.lastIndexOf("/") + 1);
-
     musicPlay();
-}
-
-oNext.onclick = nextMusic;
-
-function nextMusic() {
-    musicPause();
-
-    //切换歌曲
-    index++;
-    if (index < 0) {
-        index = len - 1;
-    } else if (index >= len) {
-        index = 0;
-    }
-    oAudio.src = source[index].src;
-    name = decodeURI(oAudio.src);
-    oCurrentSrc.innerHTML = name.substring(name.lastIndexOf("/") + 1);
-
-    musicPlay();
-}
-
-//重置时间和进度
-function reset() {
-    oAudio.currentTime = 0;
-    oCurrentTime.innerHTML = conversion(0);
-    duration = oAudio.duration;
-    oDurationTime.innerHTML = conversion(duration);
-    oProActive.style.width = radioRadius + "px";
 }
