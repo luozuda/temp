@@ -33,10 +33,13 @@ var timer,
     name;
 
 var source = [{
+    img:"./source/1.jpg",
     src: "./source/Andy Mei、Alan Walker - Faded (纯钢琴版).mp3"
 }, {
+    img:"./source/2.jpg",
     src: "./source/梁静茹 - 分手快乐 (CCTV音乐频道).mp3"
 }, {
+    img:"./source/3.jpg",
     src: "./source/薛之谦 - 演员.mp3"
 }];
 var len = source.length;
@@ -52,6 +55,7 @@ function bindEvent() {
     oAudio.onloadedmetadata = function () {
         name = decodeURI(oAudio.currentSrc);
         oCurrentSrc.innerHTML = name.substring(name.lastIndexOf("/") + 1, name.lastIndexOf("."));
+        oImg.src=source[index].img;
 
         duration = oAudio.duration;
         oDurationTime.innerHTML = conversion(duration);
