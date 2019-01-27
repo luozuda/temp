@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>刮刮乐</title>
+    <style>
+        canvas {
+            /* background-image: url("./img/1.jpg"); */
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="600" height="600"></canvas>
+    <script>
+        var myCanvas = document.getElementById("myCanvas");
+        var ctx = myCanvas.getContext("2d");
+        var w = myCanvas.width;
+        var h = myCanvas.height;
+
+        function init() {
+            var img = new Image();
+            var random = Math.random();
+            if (random < 0.1) {
+                img.src = "./img/1.jpg";
+            } else {
+                img.src = "./img/2.jpg";
+            }
+
+            //图片加载完才设置canvas的背景
+            img.onload = function () {
+                myCanvas.style.backgroundImage = "url(" + img.src + ")";
+                myCanvas.addEventListener("mousedown", downFun);
+            }
+
+            ctx.beginPath();
+            ctx.fillStyle = "#aaa";
+            ctx.fillRect(0, 0, 600, 600);
+            ctx.globalCompositeOperation = "destination-out";
+        }
+        init();
+
+        function downFun() {
+            myCanvas.addEventListener("mousemove", moveFun);
+            document.body.addEventListener("mouseup", upFun);
+        }
+
+        function moveFun(e) {
+            var x = e.clientX - myCanvas.offsetLeft;
+            var y = e.clientY - myCanvas.offsetTop;
+            ctx.beginPath();
+            ctx.arc(x, y, 50, 0, Math.PI * 2);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        function upFun() {
+            myCanvas.removeEventListener("mousemove", moveFun);
+            document.body.removeEventListener("mouseup", upFun);
+            clearCover();
+        }
+
+        function clearCover() {
+            var imageData = ctx.getImageData(0, 0, w, h);
+            var len = imageData.data.length;
+            var sum = 0;
+            for (var i = 0; i < len; i += 4) {
+                if (imageData.data[i] == 0) {
+                    sum++;
+                }
+            }
+            if (sum > w * h * 0.7) {
+                ctx.clearRect(0, 0, w, h);
+            }
+        }
+    </script>
+</body>
+
+</html>
