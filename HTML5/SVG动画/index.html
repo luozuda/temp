@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG动画</title>
+    <style>
+        svg:first-child {
+            border: 1px solid #000;
+            background-color: orange;
+        }
+
+        svg:nth-child(2){
+            border: 1px solid #000;
+            background-color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <svg width="600" height="600" xmlns="http://www.w3.org/2000/svg">
+        <text font-size="40" x="0" y="0" stroke="#cd0000">I
+            <animateMotion path="M 0 0 C 600 200, 0 400, 600 600" rotate="auto" begin="0s" dur="3s" repeatCount="indefinite"></animateMotion>
+        </text>
+        <text font-size="40" x="0" y="0" stroke="#cd0000">LOVE
+            <animateMotion path="M 0 0 C 600 200, 0 400, 600 600" rotate="auto" begin="1s" dur="3s" repeatCount="indefinite"></animateMotion>
+        </text>
+        <text font-size="40" x="0" y="0" stroke="#cd0000">YOU
+            <animateMotion path="M 0 0 C 600 200, 0 400, 600 600" rotate="auto" begin="2s" dur="3s" repeatCount="indefinite"></animateMotion>
+        </text>
+    </svg>
+    <svg width="600" height="600" xmlns="http://www.w3.org/2000/svg">
+        <rect x="100" y="100" width="5" height="20" fill="#ff6700">
+            <animate attributeName="opacity" from="0" to="1" begin="0s" dur="0.6s" repeatCount="indefinite" />
+        </rect>
+        <rect x="110" y="100" width="5" height="20" fill="#ff6700">
+            <animate attributeName="opacity" from="0" to="1" begin="0.2s" dur="0.6s" repeatCount="indefinite" />
+        </rect>
+        <rect x="120" y="100" width="5" height="20" fill="#ff6700">
+            <animate attributeName="opacity" from="0" to="1" begin="0.4s" dur="0.6s" repeatCount="indefinite" />
+        </rect>
+
+        <rect x="200" y="100" width="5" height="20" fill="#ff6700">
+            <animate attributeName="height" values="20;10;20" begin="0s" dur="0.6s" repeatCount="indefinite" />
+        </rect>
+        <rect x="210" y="100" width="5" height="20" fill="#ff6700">
+            <animate attributeName="height" values="20;10;20" begin="0.2s" dur="0.6s" repeatCount="indefinite" />
+        </rect>
+        <rect x="220" y="100" width="5" height="20" fill="#ff6700">
+            <animate attributeName="height" values="20;10;20" begin="0.4s" dur="0.6s" repeatCount="indefinite" />
+        </rect>
+
+        <rect x="300" y="100" width="5" height="10" fill="#ff6700">
+            <animate attributeName="y" values="100;110;100" begin="0s" dur="0.6s" repeatCount="indefinite" />
+        </rect>
+        <rect x="310" y="100" width="5" height="10" fill="#ff6700">
+            <animate attributeName="y" values="100;110;100" begin="0.2s" dur="0.6s" repeatCount="indefinite" />
+        </rect>
+        <rect x="320" y="100" width="5" height="10" fill="#ff6700">
+            <animate attributeName="y" values="100;110;100" begin="0.4s" dur="0.6s" repeatCount="indefinite" />
+        </rect>
+
+        <rect x="400" y="107" width="5" height="6" fill="#ff6700">
+            <animate attributeName="height" values="6;20;6" begin="0s" dur="0.6s" repeatCount="indefinite" />
+            <animate attributeName="y" values="107;100;107" begin="0s" dur="0.6s" repeatCount="indefinite" />
+        </rect>
+        <rect x="410" y="107" width="5" height="6" fill="#ff6700">
+            <animate attributeName="height" values="6;20;6" begin="0.2s" dur="0.6s" repeatCount="indefinite" />
+            <animate attributeName="y" values="107;100;107" begin="0.2s" dur="0.6s" repeatCount="indefinite" />
+        </rect>
+        <rect x="420" y="107" width="5" height="6" fill="#ff6700">
+            <animate attributeName="height" values="6;20;6" begin="0.4s" dur="0.6s" repeatCount="indefinite" />
+            <animate attributeName="y" values="107;100;107" begin="0.4s" dur="0.6s" repeatCount="indefinite" />
+        </rect>
+    </svg>
+</body>
+
+</html>
