@@ -190,8 +190,6 @@ function changeMusic(num) {
     }
     oAudio.src = source[index].src;
     oAudio.load();
-    name = decodeURI(oAudio.src);
-    oCurrentSrc.innerHTML = name.substring(name.lastIndexOf("/") + 1);
     oImg.style.animation = "";
     musicPlay();
 }
