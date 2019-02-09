@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>drag-drop</title>
+    <style>
+        .drag,
+        .drag2 {
+            width: 100px;
+            height: 100px;
+            background-color: #333;
+            border-radius: 10px;
+            text-align: center;
+            line-height: 100px;
+        }
+
+        .target {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 600px;
+            height: 600px;
+            border: 1px dashed #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="drag" draggable="true">drag</div>
+    <div class="drag2" draggable="true">drag2</div>
+    <div class="target">target</div>
+    <script>
+        var drag = document.getElementsByClassName("drag")[0],
+            drag2 = document.getElementsByClassName("drag2")[0],
+            target = document.getElementsByClassName("target")[0];
+
+        drag.addEventListener("dragstart", function (e) {
+            var dt = e.dataTransfer;
+            var text = dt.setData("id", this.className);
+            console.log("dragstart");
+        });
+        drag2.addEventListener("dragstart", function (e) {
+            var dt = e.dataTransfer;
+            var text = dt.setData("id", this.className);
+            console.log("dragstart");
+        });
+        // drag.addEventListener("dragover", function () {
+        //     console.log("dragover");
+        // });
+        // drag.addEventListener("dragend", function () {
+        //     console.log("dragend");
+        // });
+        // target.addEventListener("dragenter", function () {
+        //     console.log("dragenter");
+        // });
+        target.addEventListener("dragover", function (e) {
+            e.preventDefault();
+            console.log("dragover");
+        });
+        // target.addEventListener("dragleave", function () {
+        //     console.log("dragleave");
+        // });
+        target.addEventListener("drop", function (e) {
+            console.log("drop");
+            var dt = e.dataTransfer;
+            var text = dt.getData("id");
+            console.log(text);
+            this.appendChild(document.getElementsByClassName(text)[0]);
+        });
+    </script>
+</body>
+
+</html>
