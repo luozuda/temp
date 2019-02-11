@@ -1,6 +1,7 @@
 var content = document.getElementsByClassName("content")[0];
 var val = document.getElementsByClassName("val")[0];
 var text = document.getElementsByClassName("text")[0];
+var loader = null;
 
 // var file,
 //     step = 1024 * 1024,
@@ -16,7 +17,9 @@ content.addEventListener("drop", function (e) {
     file = e.dataTransfer.files[0];
     //total = file.size;
 
-    var loader = new FileLoader(file, events);
+    if (loader == null) {
+        loader = new FileLoader(file, events);
+    }
     // readBlob(reader, 0, step);
     // bindEvent();
 });
