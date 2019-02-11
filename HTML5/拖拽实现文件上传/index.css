@@ -1,0 +1,37 @@
+.content {
+    width: 300px;
+    height: 300px;
+    line-height: 300px;
+    text-align: center;
+    background-color: #aaa;
+    color: #fff;
+}
+
+.tool {
+    position: relative;
+    width: 300px;
+    height: 30px;
+    margin-top: 20px; 
+}
+
+.progress {
+    position: absolute;
+    left: 0;
+    width: 250px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.val{
+    width: 0;
+    height: 30px;
+    background-color: #333;
+}
+
+.text {
+    position: absolute;
+    right: 0;
+    line-height: 30px;
+}
