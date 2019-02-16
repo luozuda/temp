@@ -14,6 +14,10 @@
             padding: 0;
         }
 
+        body {
+            background-color: rgb(168, 151, 136);
+        }
+
         a {
             text-decoration: none;
         }
@@ -55,6 +59,12 @@
             color: #efefef;
         }
 
+        .topbar-nav li:hover>.item {
+            display: flex;
+            flex-direction: column;
+            animation: move 0.1s linear;
+        }
+
         .topbar-nav li a {
             padding: 0 0.6rem;
             display: inline-block;
@@ -62,12 +72,6 @@
             line-height: 2.5rem;
             text-align: center;
             color: #aaa;
-        }
-
-        .topbar-nav li:hover>.item {
-            display: flex;
-            flex-direction: column;
-            animation: move 0.1s linear;
         }
 
         .topbar-nav li a:hover {
@@ -96,11 +100,9 @@
         }
 
         /* 主体 */
-
         .content {
-            background-color: rgb(168, 151, 136);
-            min-height: 90vh;
-            padding: 1.2rem;
+            min-height: 38rem;
+            margin-bottom: 1rem;
             text-align: center;
         }
 
@@ -172,8 +174,8 @@
 
         /* 底部 */
         .bottom {
-            height: 3.4rem;
-            line-height: 3.4rem;
+            height: 4rem;
+            line-height: 4rem;
             text-align: center;
             background-color: #333;
             color: #fff;
@@ -246,14 +248,13 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href="https://my.oschina.net/u/3986435/">博客</a></li>
-                    <li><a href="https://github.com/luozuda/temp">GITHUB</a></li>
+                    <li><a href="https://my.oschina.net/u/3986435/" target="_blank">博客</a></li>
+                    <li><a href="https://github.com/luozuda/temp" target="_blank">GITHUB</a></li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- content -->
     <div class="content">
         <div class="container">
             <h1>案例</h1>
