@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>结构元素</title>
+    <style>
+        body,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        header {
+            height: 40px;
+            background-color: #333;
+        }
+
+        main {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        main::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        aside {
+            float: left;
+            width: 200px;
+            height: 600px;
+            margin: 10px;
+            border: 1px solid #555;
+            background-color: red;
+        }
+
+        section {
+            float: left;
+            right: 10px;
+            min-width: 1000px;
+            min-height: 600px;
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #555;
+            background-color: pink;
+        }
+
+        article {
+            width: 100%;
+            height: 800px;
+            background-color: yellow;
+        }
+
+        footer {
+            height: 100px;
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </header>
+    <main>
+        <aside>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </aside>
+        <section>
+            <article></article>
+        </section>
+    </main>
+    <footer></footer>
+</body>
+
+</html>

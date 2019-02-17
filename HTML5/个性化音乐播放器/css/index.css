@@ -1,0 +1,219 @@
+body,
+ul,
+li,
+a,
+h1 {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/bg.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+}
+
+.wrapper {
+    width: 700px;
+    margin: 0 auto;
+}
+
+.main {
+    width: 100%;
+    /* margin-top: 10px;  */
+    text-align: center;
+}
+
+#currentSrc {
+    padding: 10px;
+    text-align: center;
+    font-size: 24px;
+    background:  rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 0 0 50px 50px;
+}
+
+.main img {
+    width: 300px;
+    height: 300px;
+    margin: 100px auto 0;
+    border: 10px solid rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.tool {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.5);
+    margin-top: 100px;
+    border-radius: 20px;
+}
+
+/* 按钮 */
+.tool .btn {
+    display: flex;
+    justify-content: space-around;
+    width: 150px;
+    height: 30px;
+}
+
+.tool i {
+    color: #fff;
+    font-size: 30px;
+}
+
+/* 进度条 */
+.progress {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    height: 30px;
+    /* background-color: #ccc; */
+}
+
+.current-time,
+.duration-time {
+    width: 80px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+}
+
+.pro-box {
+    position: relative;
+    width: 240px;
+    height: 30px;
+}
+
+.pro-bg {
+    position: absolute;
+    top: 50%;
+    margin-top: -1px;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.pro-active {
+    position: absolute;
+    top: 50%;
+    margin-top: -1px;
+    width: 8px;
+    height: 2px;
+    background-color: #fff;
+}
+
+.pro-active .pro-radio-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: -9px;
+    margin-right: -6px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    /* background-color: rgba(0,0,0,0.5); */
+}
+
+.pro-active .pro-radio-box .radio {
+    display: inline-block;
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    margin-top: -4px;
+    margin-right: -4px;
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+/* 音量 */
+.volume {
+    position: relative;
+    width: 30px;
+    height: 30px;
+}
+
+.volume:hover>.vol-box {
+    display: block;
+}
+
+.vol-box {
+    display: none;
+    position: absolute;
+    top: -70px;
+    left: 0;
+    width: 30px;
+    height: 70px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.vol-bg {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    margin-left: -1px;
+    width: 2px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.vol-active {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    margin-left: -1px;
+    width: 2px;
+    height: 50px;
+    background-color: #fff;
+}
+
+.vol-active .vol-radio-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: -6px;
+    margin-left: -9px;
+    width: 20px;
+    height: 20px;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    cursor: pointer;
+}
+
+.vol-active .vol-radio-box .radio {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -4px;
+    margin-left: -4px;
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border-radius: 50%;
+}

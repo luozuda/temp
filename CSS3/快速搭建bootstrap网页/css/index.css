@@ -1,0 +1,154 @@
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.masthead {
+    position: relative;
+    text-align: center;
+    background: linear-gradient(45deg, #020031 0, #6d3353 100%);
+    padding: 60px 0 80px;
+    margin-bottom: 0;
+    z-index: 99;
+}
+
+.masthead::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    background-image: url(../img/bs-docs-masthead-pattern.png);
+    background-position: center;
+    opacity: 0.5;
+}
+
+.masthead h1,
+.masthead p {
+    color: #fff;
+}
+
+.masthead h1 {
+    font-size: 60px;
+    font-weight: 700;
+}
+
+.masthead ul li {
+    list-style: none;
+}
+
+.masthead ul li a {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.masthead ul li a:hover{
+    color: #fff;
+}
+
+.bc-social {
+    padding: 15px 0;
+    text-align: center;
+    background-color: #f5f5f5;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.bc-social ul li {
+    display: inline-block;
+}
+
+.bc-social ul li:nth-child(2)::before {
+    padding: 0 10px;
+    content: "|";
+    color: #ccc;
+}
+
+.bc-social ul li a {
+    color: #555;
+}
+
+.bc-social ul li a:hover {
+    text-decoration: underline;
+}
+
+.bc-social ul li:nth-child(2) a:hover {
+    color: #d9534f;
+}
+
+.projects-header {
+    width: 60%;
+    margin: 60px auto 10px;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 200;
+}
+
+.projects .thumbnail {
+    max-width: 310px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.thumbnail .caption {
+    padding: 9px;
+}
+
+.thumbnail .caption a:hover {
+    text-decoration: none;
+}
+
+.footer {
+    color: #777;
+    padding: 30px 0;
+    border-top: 1px solid #e5e5e5;
+    margin-top: 70px;
+}
+
+.footer-top .about>div {
+    height: 110px;
+    margin-bottom: 10px;
+}
+
+.footer-top .about>div h4 {
+    color: #563d7c;
+    font-size: 16px;
+}
+
+.footer a {
+    color: #777;
+}
+
+.footer-bottom {
+    font-size: 13px;
+}
+
+.footer-bottom ul>li{
+    padding: 0;
+}
+
+.footer-bottom ul>li+li::before {
+    padding: 0 10px;
+    content: "|";
+    color: #ccc;
+}
+
+@media screen and (min-width:768px) {
+    .masthead {
+        padding: 90px 0 110px;
+    }
+
+    .masthead h1 {
+        font-size: 90px;
+    }
+}
