@@ -13,6 +13,11 @@
         }
 
         .navbar{
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 99;
+            width: 100%;
             margin-bottom: 0;
             border: none;
         }
@@ -21,7 +26,14 @@
                 border-radius: 0;
             }
         }
+
+        .container-fluid{
+            max-width: 1200px;
+        }
+
         .jumbotron{
+            margin-top: 50px;
+            margin-bottom: 0;
             text-align: center;
             background: rgb(46, 145, 170);
         }
@@ -42,7 +54,7 @@
             color: #777;
             padding: 30px 0;
             border-top: 1px solid #e5e5e5;
-            margin: 0 70px;
+            margin: 0 50px;
         }
     </style>
 </head>
@@ -59,7 +71,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">个人主页</a>
+                <a class="navbar-brand" href="#">首页</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -130,8 +142,8 @@
     <div class="jumbotron">
         <div class="container-fluid">
             <h1>欢迎进入我的个人主页</h1>
-            <p>这里展示了一些我做的案例，如果你对我的个人主页有任何意见或建议请联系我...</p>
-            <p><a class="btn btn-info btn-lg" href="https://github.com/luozuda/temp" role="button">查看案例源码</a></p>
+            <p>这里展示了一些我编写的案例，如您有任何疑问或建议，可以通过右上角的联系方式向我提出</p>
+            <p><a class="btn btn-info btn-lg" href="https://github.com/luozuda/temp" role="button">查看源码</a></p>
         </div>
     </div>
     <div class="wrapper">
@@ -270,7 +282,7 @@
 
     <div class="footer">
         <div class="container-fluid">
-            <div class="row footer-top">
+            <div class="row">
                 <div class="col-md-12">
                     <div class="row">
                         <h4>知识链接</h4>
