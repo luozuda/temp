@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>worker</title>
+</head>
+
+<body>
+    <script>
+        var worker = new Worker("worker.js");
+        worker.postMessage(10);
+        worker.onmessage = function (e) {
+            console.log(e.data);
+            if (e.data == 10000) {
+                worker.terminate();
+                worker.postMessage(20);
+            }
+        }
+    </script>
+</body>
+
+</html>

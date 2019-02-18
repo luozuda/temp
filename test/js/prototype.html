@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>prototype</title>
+    <script>
+        function Book(name, page) {
+            this.name = name;
+            this.page = page;
+        }
+
+        //定义Book的原型
+        var aaa = {
+            author_name: "jj"
+        };
+        Book.prototype = aaa;
+        console.log(Book.prototype)
+
+        // 或者Book.prototype.author_name="CC";
+
+        var book1 = new Book("aa", 3);
+        var book2 = new Book("BB", 4);
+        console.log("book1.author_name:" + book1.author_name + "====book2.author_name:" + book2.author_name)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
