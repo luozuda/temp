@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文本属性</title>
+</head>
+
+<body>
+    <div id="test">Hello</div>
+    <div id="test2">Hello2</div>
+    <button id="btn">btn</button>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        // console.log($("#test").text());
+        $("#btn").click(function () {
+            // console.log($("#test").text());
+            // console.log($("div").text());
+            $("div").text(function (index, ele) {
+                if (index % 2 == 0) {
+                    return 'aaa';
+                } else {
+                    return 'bbb';
+                }
+            });
+
+            //text() 取值赋值均一组
+            //html() 取值取第一个，赋值赋一组
+            //val() 取值取第一个，赋值赋一组
+        });
+    </script>
+</body>
+
+</html>
