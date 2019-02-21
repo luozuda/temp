@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>淘宝购物车数量控制组件</title>
+    <style>
+        .wrapper{
+            display: flex;
+        }
+        .prev,.next{
+            width: 40px;
+            height: 50px;
+            background-color: #ccc;
+            text-align: center;
+            line-height: 50px;
+            border: 2px solid #ccc;
+            cursor: pointer;
+            user-select: none;
+            font-size: 20px;
+        }
+        .text{
+            padding: 0;
+            width: 60px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+        }
+        .min{
+            color: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="prev">-</div>
+        <input type="text" class="text" value="1">
+        <div class="next">+</div>
+    </div>
+    <script src="./jquery-3.3.1.min.js"></script>
+    <script>
+        var value = 1;
+        var max = 20;
+        var min = 1;
+
+        function notIn() {
+            if (value <= 1) {
+                $(".prev").addClass("min");
+            } else if (value >= 20) {
+                $(".next").addClass("min");
+            } else {
+                $(".min").removeClass("min");
+            }
+        }
+        notIn();
+
+        function count(num) {
+            value = parseInt($(".text").val()) + num;
+            if (value >= max) {
+                value = max;
+            } else if (value >= min && value <= max) {
+
+            } else {
+                value = 1;
+            }
+            $(".text").val(value);
+        }
+
+        $(".prev").add(".next").click(function () {
+            if ($(this).hasClass("prev")) {
+                count(-1);
+            } else {
+                count(1);
+            }
+            notIn();
+        });
+
+        $(".text").on("input", function () {
+            count(0);
+            notIn();
+        });
+    </script>
+</body>
+
+</html>
