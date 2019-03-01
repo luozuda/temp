@@ -50,8 +50,10 @@
         function notIn() {
             if (value <= 1) {
                 $(".prev").addClass("min");
+                $(".next").removeClass("min");
             } else if (value >= 20) {
                 $(".next").addClass("min");
+                $(".prev").removeClass("min");
             } else {
                 $(".min").removeClass("min");
             }
@@ -60,7 +62,7 @@
 
         function count(num) {
             value = parseInt($(".text").val()) + num;
-            if (value >= max) {
+            if (value > max) {
                 value = max;
             } else if (value >= min && value <= max) {
 
