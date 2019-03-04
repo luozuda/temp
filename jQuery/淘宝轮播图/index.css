@@ -15,7 +15,11 @@ a {
     height: 280px;
     margin: 200px auto;
     overflow: hidden;
-    border: 5px solid #000;
+    border: 4px solid #000;
+}
+
+.wrapper:hover>.btn {
+    display: block;
 }
 
 .img-box {
@@ -30,6 +34,7 @@ a {
 }
 
 .btn {
+    display: none;
     position: absolute;
     top: 50%;
     width: 100%;
