@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>特性、属性</title>
+</head>
+
+<body>
+    <div id="test" class="asf" aaa="bbb">div</div>
+    <p>ppp</p>
+    <script src="./jquery-3.3.1.min.js"></script>
+    <script>
+        console.log($("#test").attr("id"));
+        console.log($("#test").prop("id"));
+
+        console.log($("#test").attr("class"));
+        console.log($("#test").prop("class"));
+
+        console.log($("#test").attr("aaa"));
+        console.log($("#test").prop("aaa"));
+
+        // 属性：
+        // 1.固有属性（特性）: id class name type value href title alt 
+        // 2.新增属性： 自定义的属性
+
+        //prop
+        console.log(test.className);
+        //attr
+        console.log(test.getAttribute('class'));
+
+        $("#test").attr({
+            "id": "test2",
+            "aaa": "ccc2"
+        });
+        $("p").prop({
+            "id": "test3",
+            "aaa": "ccc3"
+        });
+    </script>
+</body>
+
+</html>
