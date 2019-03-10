@@ -1,0 +1,36 @@
+html,
+body,
+ul,
+li,
+img {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+    overflow: hidden;
+}
+
+ul {
+    list-style: none;
+}
+
+.list {
+    position: relative;
+    font-size: 0;
+}
+
+.list::after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.list li {
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
