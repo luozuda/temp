@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>移动端相册</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <ul class="list">
+        <li><img src="img/1.jpg" alt=""></li>
+        <li><img src="img/2.jpg" alt=""></li>
+        <li><img src="img/3.jpg" alt=""></li>
+        <li><img src="img/4.jpg" alt=""></li>
+        <li><img src="img/5.jpg" alt=""></li>
+        <li><img src="img/6.jpg" alt=""></li>
+        <li><img src="img/7.jpg" alt=""></li>
+        <li><img src="img/8.jpg" alt=""></li>
+        <li><img src="img/9.jpg" alt=""></li>
+        <li><img src="img/10.jpg" alt=""></li>
+    </ul>
+    <script src="js/zepto.js"></script>
+    <script src="js/touch.js"></script>
+    <script src="js/fx.js"></script>
+    <script src="js/MobileAlbum.js"></script>
+    <script>
+        var total = $('.list>li').length;
+        var column = 4;
+        var mobileAlbum = new MobileAlbum(total, column);
+        $('.list').on('tap', 'li', function () {
+            mobileAlbum.index = $('.list>li').index($(this));
+            mobileAlbum.show();
+
+            $('.list').on('swipeLeft swipeRight', function (e) { //左右滑动图片
+                if (e.type == 'swipeLeft') {
+                    mobileAlbum.slider(1);
+                } else {
+                    mobileAlbum.slider(-1);
+                }
+            }).on('swipeDown', function () { //向下滑回到列表
+                mobileAlbum.init();
+                $(this).off('swipeLeft swipeRight swipeDown');
+            });
+        })
+    </script>
+</body>
+
+</html>
