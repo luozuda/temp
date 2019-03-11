@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>prototype上定义方法</title>
+</head>
+
+<body>
+    <script>
+        function File() {
+            this.i = 0;
+            this.read(this.i);
+        }
+        File.prototype = {
+            read: function (a) {
+                console.log(a);
+            }
+        }
+        var fff = new File();
+    </script>
+</body>
+
+</html>

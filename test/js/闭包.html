@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>闭包</title>
+</head>
+
+<body>
+    <script>
+        (function ($) {
+            var i = 0;
+            $.foo = function () {
+                console.log('我是闭包，可以获取变量i：' + i)
+            }
+        })(window);
+        // console.log(i);//无法获取局部变量i
+        foo(); //可以获取局部变量i
+    </script>
+</body>
+
+</html>
