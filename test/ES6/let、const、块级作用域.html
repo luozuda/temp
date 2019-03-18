@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ES5
+
+        // // var msg;
+        // if (true) {
+        //     var msg = 'hello';
+        //     console.log(msg);
+        // }
+        // console.log(msg); //msg具有全局作用域
+
+        // function fn() {
+        //     var age = 10; //age具有函数作用域
+        // }
+
+        // var arr = [];
+        // for (var i = 0; i < 10; i++) {
+        //     arr.push(function () {
+        //         console.log(i);
+        //     })
+        // }
+        // console.log(i); //i=10
+        // arr.forEach(function (item, index, arr) {
+        //     item();
+        // })
+
+
+        //ES6
+
+        //具有块级作用域
+        // let msg = "hello world"; 
+        // {
+        //     let age = 10;
+        // }
+        // console.log(age);
+
+        // 不能重复声明变量
+        // const age = 10;
+        // age = 20;
+
+        // const必须有初始化值，且绑定的内存地址不能更改(初始化值为对象时可以更改对象的值)
+        // const person = {
+        //     name: 'cc',
+        //     age: 10
+        // }
+        // person.sex = 'male';
+        // console.log(person);
+
+        // 暂时性死区:在一个块中，由于不具备变量提升，let、const声明变量前使用该变量会报变量未定义的错误
+        // let age = 10; 
+        // {
+        //     console.log(age);
+        //     let age = 20;
+        // }
+    </script>
+</body>
+
+</html>
