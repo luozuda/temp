@@ -1,0 +1,16 @@
+import nav from "./nav";
+import {divTop,divBottom} from "./footer";
+import makeButton from './button';
+import {makeColor} from './color';
+import makeImage from "./image";
+import css from "./div.scss";
+console.log(css);
+import url from "./1.jpg";
+const image = makeImage(url);
+const button = makeButton("按钮");
+const color = makeColor("green");
+button.style.color=color;
+document.body.appendChild(button);
+document.body.appendChild(divTop);
+document.body.appendChild(divBottom);
+document.body.appendChild(image);

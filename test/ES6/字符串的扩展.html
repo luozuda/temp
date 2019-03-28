@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let age = 10;
+        // let msg = "hellohellohellohello\n" +
+        //     "hellohellohellohellohello\n" + age +
+        //     "hellohellohellohellohello";
+        // console.log(msg);
+
+        let age = 10;
+        let msg = `hello
+            hello ${age+10}
+            hello
+        `
+        console.log(msg);
+
+
+        // String的原型上新增了stratWidth、endWidth、includes、repeat方法
+        // 举例说明：
+        // ‘hello’.stratWidth(‘l’,2);//true,第二个参数表示索引是2及之后的字符串，如hello查找的是llo
+        // ‘hello’.endWidth(‘o’,2);//false,第二个参数表示索引是2之前的字符串，如hello查找的是he
+        // ‘hello’.includes(‘h’,2);//false,第二个参数表示索引是2及之后的字符串，如hello查找的是llo
+        // ‘hello’.repeat(3);//字符串重复3次，得到’hellohellohello’
+    </script>
+</body>
+
+</html>

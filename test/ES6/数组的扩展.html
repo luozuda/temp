@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>aa</p>
+    <p>bb</p>
+    <p>cc</p>
+    <script>
+        // Array.of:创建数组
+        // var arr1 = [1, 2, 3];
+        // var arr2 = new Array(10); //10个空元素
+        // var arr3 = Array.of(10); //数组中只有一个元素10
+
+        // Array.from: 将类数组转化位数组
+        // let myP = document.getElementsByTagName("p");
+        // let myPArr = Array.from(myP, (item) => {
+        //     return item.textContent;
+        // });
+
+        // arguments转化为数组
+        // function add() {
+        //     return Array.from(arguments).reduce((item, sum) => {
+        //         return sum += item;
+        //     }, 0)
+        // }
+        // console.log(add(1, 2, 3, 4, 5));
+
+        // 以下数组的复制都是浅拷贝
+        // let arr = [1, 2, 3];
+        // let arr1 = arr.concat(arr);
+        // let arr2 = arr.slice();
+        // let arr3 = Array.from(arr);
+
+        // var data = [{
+        //     id: 1,
+        //     name: 'aa'
+        // }, {
+        //     id: 2,
+        //     name: 'bb'
+        // }, {
+        //     id: 2,
+        //     name: 'cc'
+        // }];
+        // console.log(data.find((item, index, arr) => item.id === 2)); //find()返回查找到的第一个元素
+        // console.log(data.findIndex((item, index, arr) => item.id === 2)); //findIndex()返回元素查找到的第一个元素的索引
+        // 要查找所有匹配的元素用filter
+
+        // var arr = new Array(10);
+        // // arr.fill(1); //数组所有元素变成1
+        // arr.fill(1, 4, 10); //从索引为4的元素到所索引为10-1=9的元素都填充为1
+
+        // var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        // arr.copyWithin(0, 6, 9); //把索引是5到8的元素复制到第0位开始的地方，得到[7, 8, 9, 4, 5, 6, 7, 8, 9, 10]
+
+        // var ages = [10, 20, 32, 8];
+        // console.log(ages.some((item) => {
+        //     return item >= 18;
+        // })) //有大于等于18的，true
+        // console.log(ages.every((item) => {
+        //     return item >= 18;
+        // })) //所有都大于等于18，false
+
+        // var arr = [1, 2, 3];
+        // console.log(arr.includes(5)); //false
+        // var arr = [NaN, 2, 3];
+        // console.log(arr.includes(NaN)); //true
+        // var arr = [-0, 2, 3];
+        // console.log(arr.includes(+0)); //true
+    </script>
+</body>
+
+</html>

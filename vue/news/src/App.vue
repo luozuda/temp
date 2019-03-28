@@ -1,114 +1,105 @@
 <template>
   <div id="app">
-    <!-- <header class="container">
-      <search></search>
-    </header> -->
-    <nav class="container">
-      <navigator @select="load"></navigator>
-    </nav>
-    <main class="container">
-      <Content :dataList="dataList"></Content>
-    </main>
+    <app-header/>
+    <transition :name="transitionName">
+      <router-view class="content"></router-view>
+    </transition>
+    <tabnav/>
   </div>
 </template>
 
 <script>
-import Search from "./components/Search.vue";
-import Navigator from "./components/Navigator.vue";
-import Content from "./components/Content.vue";
-
+import Header from "./components/Header";
+import Tabnav from "./components/Tabnav";
 export default {
   name: "app",
-  data: function() {
+  data() {
     return {
-      dataList: []
+      transitionName: "slide-right" // 默认动态路由变化为slide-right
     };
   },
-  components: {
-    Search,
-    Navigator,
-    Content
-  },
-  methods: {
-    load: function(type) {
-      let data = {
-          type: type,
-          key: "fccd68b3e1dc0e75de5c4283139806e2"
-        },
-        url = "http://v.juhe.cn/toutiao/index";
-      this.$http.get(url, { params: data }).then(
-        response => {
-          if (response.body.error_code == 0) {
-            this.dataList = response.body.result.data;
-          } else {
-            alert(response.body.reason);
-          }
-        },
-        error => {
-          console.log(error);
-
-          //发送跨域请求  /api是vue.config.js里的devServer.proxy的配置
-          this.$http.get("/api", { params: data }).then(
-            response => {
-              if (response.body.error_code == 0) {
-                this.dataList = response.body.result.data;
-              } else {
-                alert(response.body.reason);
-              }
-            },
-            error => {
-              console.log(error);
-            }
-          );
-        }
-      );
+  watch: {
+    $route(to, from) {
+      let isBack = this.$router.isBack; //  监听路由变化时的状态为前进还是后退
+      if (isBack) {
+        this.transitionName = "slide-right";
+      } else {
+        this.transitionName = "slide-left";
+      }
+      this.$router.isBack = false;
+      console.log(this.$router);
     }
   },
-  created: function() {
-    this.load("top");
+  components: {
+    "app-header": Header,
+    Tabnav
+  },
+  mounted() {
+    window.addEventListener("backbutton", function(e) {
+      alert(0);
+      e.preventDefault();
+    });
   }
 };
 </script>
 
 <style>
 body,
+header,
+nav,
+main,
+footer,
 ul,
 li,
+h1,
+h2,
+h3,
 h4,
+h5,
+h6,
 p,
-a {
+a,
+img {
   margin: 0;
   padding: 0;
   list-style: none;
   text-decoration: none;
+  user-select: none;
 }
-.container {
-  max-width: 1024px;
-  margin: auto;
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
 }
-header {
+.content {
   position: fixed;
-  top: 0;
+  top: 4.5rem;
   left: 0;
   right: 0;
-  z-index: 999;
-  padding-top: 1.5rem;
-  background-color: rgb(201, 53, 53);
+  bottom: 3rem;
+  transition: all 0.8s ease;
 }
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 999;
-  box-shadow: 0 0.0625rem 0.0625rem #eee;
+
+.Router {
+  position: absolute;
+  width: 100%;
+  transition: all 0.8s ease;
+  top: 40px;
 }
-main {
-  position: fixed;
-  top: 2.5rem;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow-y: scroll;
+
+.slide-left-enter,
+.slide-right-leave-active {
+  opacity: 0;
+  -webkit-transform: translate(100%, 0);
+  transform: translate(100%, 0);
+}
+
+.slide-left-leave-active,
+.slide-right-enter {
+  opacity: 0;
+  -webkit-transform: translate(-100%, 0);
+  transform: translate(-100% 0);
 }
 </style>

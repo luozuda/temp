@@ -1,0 +1,9 @@
+div {
+    &.demo {
+        color: yellow;
+    }
+
+    >a {
+        color: red;
+    }
+}

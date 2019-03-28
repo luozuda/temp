@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // class Animal {
+        //     constructor(name) {
+        //         this.name = name;
+        //         this.thirsty = 100;
+        //         this.food = [];
+        //     }
+        //     drink() {
+        //         return this.thirsty -= 10;
+        //     }
+        //     eat(item) {
+        //         this.food.push(item);
+        //     }
+        //     static Info() {
+        //         console.log("我是一个静态方法");
+        //     }
+        // }
+        // class Dog extends Animal {
+        //     constructor(name, breed) {
+        //         super(name); //继承必须调用父类的constructor
+        //         this.breed = breed;
+        //     }
+        //     bark() {
+        //         console.log("狗在叫");
+        //     }
+        // }
+        // var wangcai = new Dog("wangcai", "中华田园犬");
+
+        // 继承内置构造函数
+        class MovieList extends Array {
+            constructor(name, ...movies) {
+                super(...movies);
+                this.name = name;
+            }
+            add(movie) {
+                this.push(movie)
+            }
+            topStar(limit) {
+                return this.sort((a, b) => a.star > b.star ? -1 : 1).slice(0, limit);
+            }
+        }
+        var movies = new MovieList('我最喜欢的电影', {
+            name: "泰坦尼克号",
+            star: 9
+        }, {
+            name: "阿凡达",
+            star: 9.5
+        }, {
+            name: "盗梦空间",
+            star: 9.2
+        })
+        movies.add({
+            name: "无间道",
+            star: 8.5
+        })
+        movies.topStar(2);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+@mixin test ($size) {
+    @if $size>20px {
+        font-size: $size;
+    }
+
+    @else {
+        font-size: 16px;
+    }
+}
+
+$name:"color";
+
+/*
+    我是注释#{$name}
+*/
+$margin:10px 10px 20px 10px;
+
+.#{$name} .btn {
+    @include test(30px);
+    font: lightness(black);
+    #{$name}: $name;
+    margin: $margin;
+}
+
+
+
+
+$directions:("t":"top", "b":"bottom", "l":"left", "r":"right");
+$dimensions:("p":"padding", "m":"margin");
+//获取padding margin间隔
+@each $dim in $dimensions {
+    //循环四个方向
+    @each $dir in $directions {
+        @for $i from 1 through 5 {
+            $size: $i*5;
+            .#{nth($dim,1)}-#{nth($dir,1)}-#{$size} {
+                #{nth($dim,2)}-#{nth($dir,2)}: #{$size}px;
+            }
+        }
+    }
+}

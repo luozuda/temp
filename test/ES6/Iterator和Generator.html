@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let colors = ['red', 'yellow', 'blue'];
+        // let arrIt = colors[Symbol.iterator]();
+        // arrIt.next(); //{value: "red", done: false}
+        // arrIt.next(); //{value: "yellow", done: false}
+        // arrIt.next(); //{value: "blue", done: false}
+        // arrIt.next(); //{value: undefined, done: true}
+
+        // for (let color of colors) {
+        //     console.log('color');
+        //     if (color == 'yellow') {
+        //         break
+        //     }
+        // }
+
+        // Generator生成器
+        // function* fn() {
+        //     console.log('A');
+        //     yield 'aa';
+        //     console.log('B');
+        //     yield 'bb';
+        //     console.log('C');
+        //     yield 'cc';
+        // }
+        // const people = fn();
+        // people.next(); //打印 A后遇到yield语句暂停，next执行完返回 {value: "bb", done: false}
+        // people.next(); //打印 B后遇到yield语句暂停，next执行完返回 {value: "aa", done: false}
+        // people.next(); //打印 C后遇到yield语句暂停，next执行完返回 {value: "cc", done: false}
+        // people.next(); //next执行完返回 {value: undefined, done: true}
+
+        // function* fn(x) {
+        //     var y = yield(x + 2); //y=6
+        //     var z = yield(y + 2); //z=10
+        //     return (x + y + z);
+        // }
+        // const it = fn(4);
+        // console.log(it.next());
+        // console.log(it.next(6));
+        // console.log(it.next(10));
+
+        // function* fn() {
+        //     console.log('A');
+        //     yield 'aa';
+        //     console.log('B');
+        //     yield 'bb';
+        //     console.log('C');
+        //     yield 'cc';
+        // }
+        // const people = fn();
+        // for (var person of people) {
+        //     console.log(person);
+        // }
+
+        // var obj = {
+        //     a: 1
+        // };
+        // obj[Symbol.iterator] = function* () {
+        //     yield 1;
+        //     yield 2;
+        //     return 3;
+        // }
+        // for (var prop of obj) {
+        //     console.log(prop);
+        // }
+    </script>
+</body>
+
+</html>

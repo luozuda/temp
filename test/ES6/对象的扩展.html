@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 方法的定义：
+        // 对象中定义方法， 可省略冒号和function
+        // let obj = {
+        //     eat: function () {}
+        // }; >>> >
+        // let obj = {
+        //     eat() {}
+        // };
+        // 箭头函数可赋值给一个变量
+        // let obj = {
+        //     eat: () => {}
+        // };
+        // 属性的简写:
+        //     属性名与值相同时可省略冒号和值
+        // let obj = {
+        //     name: name
+        // }; >>> >
+        // let obj = {
+        //     name
+        // }
+        // 外部已经定义的变量， 在对象中可只写变量名
+        // let age = 10;
+        // let obj = {
+        //     age
+        // };
+        // 计算属性名：
+        // 用[] 表示对象中的计算属性
+        // let a = ”name”;
+        // let obj = {
+        //     [a + ”1”]: 1
+        // };
+        // console.log(obj); //{name1:1}
+
+        // 新的对象方法：
+        // 1. 判断知否相等Object.is() && ===
+        //     2. 设置原型
+        // let obj = {
+        //     a: 1;b: 2
+        // };
+        // let obj1 = {
+        //     c: 3
+        // };
+        // Object.setPrototypeOf(obj, obj1); //将obj1设置为obj的原型
+        // 3. 复制对象：
+        // A.必须是自身可遍历的属性(原型上的不是自身的)
+        // let obj1 = {
+        //     a: 1
+        // };
+        // let obj2 = {
+        //     b: 2
+        // };
+        // Object.assign(obj1, obj2); //将obj2的属性复制给obj1
+        // Object.defineProperty(obj2, ”e”, {
+        //     value: 5,
+        //     enumerable: false
+        // }); //设置不可遍历的属性，这个属性不会被复制
+        // B.复制是一个一个复制的， 后面的对象属性会把前面对象的属性覆盖
+        // let obj1 = {
+        //     a: 1
+        // };
+        // let obj2 = {
+        //     b: 2
+        // };
+        // let obj3 = {
+        //     b: 3
+        // };
+        // Object.assign(obj1, obj2, obj3); //obj1={a:1,b:3}
+        // C.是浅拷贝
+        // 使用场景： 对象复制； 添加原型方法； 函数默认参数(函数内使用了Object.assign({}, DEFAULTS, options), 用options覆盖DEFAULTS)
+        // 对象的遍历： Object.keys / Object.values / Object.entries
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 默认值
+        // function fn(a = 1, b = a) {
+        //     console.log(a, b)
+        // }
+        // fn();
+
+        //惰性求值
+        // const c = 3;
+        // function fn(a = c, b = a) {
+        //     const c = 4;
+        //     console.log(a, b)
+        // }
+        // fn();
+
+        // 剩余运算符
+        // let arr = [1, 2, 3];
+        // let arr2 = [...arr, 4, 5, 6];
+        // console.log(arr2); //[1,2,3]
+
+        // 扩展运算符 1.实参拆分后分别赋值给形参
+        // function fn(a, b, c) {
+        //     console.log(a, b, c)
+        // }
+        // fn(...[1, 2, 3]) //1 2 3
+
+        // 扩展运算符 2.数组复制(浅拷贝)
+        // let arr = [1, 2, 3];
+        // let arr2 = [...arr, 4, 5, 6];
+        // console.log(arr, arr2); //[1,2,3] [1,2,3,4,5,6]
+
+        // 模拟命名参数：
+        // function fn({start,end}){console.log(start,end)}
+        // fn({start:1,end:2});//1 2
+        // function fn({start=1,end=2}){console.log(start,end)}
+        // fn({});//1 2
+    </script>
+</body>
+
+</html>

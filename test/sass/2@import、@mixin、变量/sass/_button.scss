@@ -1,0 +1,6 @@
+@mixin btn-class($color1:red, $color2:red) {
+    color: $color2;
+    background-color: $color1;
+    font: 12px;
+    @content
+}

@@ -1,0 +1,28 @@
+@charset "UTF-8";
+.class div {
+  color: red;
+}
+
+/*
+    我是注释
+*/
+#app .demo {
+  color: #333;
+}
+
+.btn {
+  color: yellow;
+  background-color: red;
+  font: 12px;
+  border-radius: 2px;
+  position: relative;
+  border: 1px solid yellow;
+}
+
+.btn-a {
+  background-color: yellow;
+  font: 12px;
+  position: absolute;
+}
+
+/*# sourceMappingURL=index.css.map */

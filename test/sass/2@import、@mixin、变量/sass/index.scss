@@ -1,0 +1,36 @@
+@import "./layout";
+
+/*
+    我是注释
+*/
+$error-color:#eee !default;
+
+#app {
+    $text-color: #aaa;
+
+    .demo {
+        color: $error-color; //我是注释
+    }
+}
+
+// div {
+//     color: $text-color;
+// }
+
+@import "_button";
+
+.btn {
+
+    // @include btn-class;
+    @include btn-class($color2: yellow) {
+        border-radius: 2px;
+    };
+    position: relative;
+    border: 1px solid yellow;
+}
+
+.btn-a {
+    // @include btn-class(yellow, green);
+    @include btn-class(yellow, null);
+    position: absolute;
+}

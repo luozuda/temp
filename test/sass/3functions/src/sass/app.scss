@@ -1,0 +1,29 @@
+@import '_mixins.scss';
+
+.btn {
+    padding: 2px 10px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    color: #fff;
+
+    &:hover:not(:disabled) {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+    }
+
+    &:disabled {
+        color: #666;
+        opacity: 0.5;
+    }
+}
+
+.theme-1 {
+    @include theme(#9f9, 100deg, 50%);
+}
+
+.theme-2 {
+    @include theme(#968);
+}
+
+.theme-3 {
+    @include theme(red, $darken: 40%);
+}
