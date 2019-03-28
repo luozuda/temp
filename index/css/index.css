@@ -1,42 +1,28 @@
-li {
-    list-style: none;
+body {
+    padding-top: 50px;
 }
 
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99;
-    width: 100%;
-    margin-bottom: 0;
-    border: none;
-}
-
-@media (min-width: 768px) {
-    .navbar {
-        border-radius: 0;
-    }
-}
-
-.container-fluid {
-    max-width: 1200px;
+    border-radius: 0;
 }
 
 .jumbotron {
-    margin-top: 50px;
-    margin-bottom: 0;
     text-align: center;
-    background: rgb(46, 145, 170);
+    background: rgb(32, 185, 212);
 }
 
 .page-header {
     text-align: center;
-    color: rgb(81, 153, 52);
+    color: rgb(32, 185, 212);
 }
 
 .thumbnail {
-    min-height: 240px;
+    height: 240px;
     text-align: center;
+}
+
+.thumbnail:hover {
+    text-decoration: none;
 }
 
 .thumbnail img {
@@ -44,8 +30,7 @@ li {
 }
 
 .footer {
-    color: #777;
-    padding: 30px;
-    border-top: 1px solid #e5e5e5;
+    padding: 30px 0;
     background-color: #ccc;
+    color: rgb(32, 129, 48);
 }
