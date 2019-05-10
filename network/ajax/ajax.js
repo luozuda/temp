@@ -12,7 +12,7 @@ function ajax(method, url, callback, data, flag) {
     if (window.XMLHttpRequest) {
         xhr = new XMLHttpRequest();
     } else {
-        xhr = new ActiveXObject('Microsoft.XMLHttp');
+        xhr = new ActiveXObject('Microsoft.XMLHTTP');
     }
 
     //监控数据 0 1 2 3 4

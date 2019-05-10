@@ -30,15 +30,46 @@ package.json:
 
 
 -----------------------------------------------------------
+webpack处理sass步骤：
+参考：https://www.webpackjs.com/loaders/sass-loader/
+1.先安装以下loader：
+npm install sass-loader node-sass css-loader style-loader --save-dev
+
+或者
+
 sass编译成css的loader:
 npm install sass-loader node-sass --save-dev
 在main.js中引入css的loader:
 npm install css-loader --save-dev
 在index.html中引入style标签设置css样式的loader：
 npm install style-loader --save-dev
-在index.html中使用link方式引入css文件的loader：
+
+在index.html中使用link方式引入css文件的plugin：
 npm install --save-dev mini-css-extract-plugin
 https://github.com/webpack-contrib/mini-css-extract-plugin
+
+
+2.webpack.base.conf.js中引入loader
+module: {
+    rules: [
+        {
+            test: /\.scss$/,
+            use: [
+                {
+                    loader: "style-loader"// 将 JS 字符串生成为 style 节点
+                },
+                {
+                    loader: "css-loader"// 将 CSS 转化成 CommonJS 模块
+                },
+                {
+                    loader: "sass-loader" // 将 Sass 编译成 CSS
+                }
+            ]
+        }
+    ]
+}
+
+
 
 将ES6转成ES5的loader：
 npm install babel-loader @babel/core @babel/preset-env --save-dev

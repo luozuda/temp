@@ -1,0 +1,15 @@
+{
+  "data": [{
+    "name": "Faded",
+    "singer": "Alan Walker",
+    "url": "http://jordan-music.oss-cn-hangzhou.aliyuncs.com/music/Alan%20Walker%E3%80%81Andy%20Mei%20-%20Faded%20%28%E5%A5%B3%E5%A3%B0%E9%92%A2%E7%90%B4%E7%89%88%29.mp3"
+  }, {
+    "name": "分手快乐",
+    "singer": "梁静茹",
+    "url": "http://jordan-music.oss-cn-hangzhou.aliyuncs.com/music/%E6%A2%81%E9%9D%99%E8%8C%B9%20-%20%E5%88%86%E6%89%8B%E5%BF%AB%E4%B9%90%20%28CCTV%E9%9F%B3%E4%B9%90%E9%A2%91%E9%81%93%29.mp3"
+  }, {
+    "name": "演员",
+    "singer": "薛之谦",
+    "url": "http://jordan-music.oss-cn-hangzhou.aliyuncs.com/music/%E8%96%9B%E4%B9%8B%E8%B0%A6%20-%20%E6%BC%94%E5%91%98.mp3"
+  }]
+}
