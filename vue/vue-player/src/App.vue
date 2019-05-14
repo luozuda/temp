@@ -8,6 +8,8 @@
     <controls
       :currentTime="convCurrentTime"
       :durationTime="convDurationTime"
+      :rateOfProgress="rateOfProgress"
+      :volume="volume"
       :paused="paused"
       :muted="muted"
       @playHandler="playHandler"
@@ -35,7 +37,8 @@ export default {
       paused: true, //是否暂停状态
       muted: false, //是否静音状态
       currentTime: "", //当前播放时长
-      durationTime: "" //总时长
+      durationTime: "", //总时长
+      volume: 1 //音量
     };
   },
   computed: {
@@ -43,10 +46,13 @@ export default {
       return this.musicList.data.length; //歌曲列表中的歌曲数量
     },
     convCurrentTime() {
-      return this.conversion(this.currentTime);//转换格式后的当前播放时长
+      return this.conversion(this.currentTime); //转换格式后的当前播放时长
     },
     convDurationTime() {
-      return this.conversion(this.durationTime);//转换格式后的总时长
+      return this.conversion(this.durationTime); //转换格式后的总时长
+    },
+    rateOfProgress() {
+      return this.currentTime / this.durationTime; //当前播放进度
     }
   },
   methods: {
@@ -86,11 +92,7 @@ export default {
     //静音控制
     muteHandler() {
       const audio = this.$refs.audio;
-      if (audio.muted) {
-        audio.muted = false;
-      } else {
-        audio.muted = true;
-      }
+      audio.muted = !audio.muted;
       this.muted = audio.muted;
     },
     //切换歌曲
@@ -142,6 +144,12 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
+  width: auto;
+  height: 100vh;
+  background-image: url("./assets/1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 header {
   position: fixed;

@@ -2,7 +2,7 @@
   <div class="controls">
     <div class="progress">
       <span class="time">{{currentTime}}</span>
-      <progressBox></progressBox>
+      <progress-bar :rate="rateOfProgress"></progress-bar>
       <span class="time">{{durationTime}}</span>
     </div>
     <div class="btn-group">
@@ -13,16 +13,16 @@
       <i class="iconfont icon-yinliang" v-if="!muted" @click="muteHandler"></i>
       <i class="iconfont icon-yinliang-guan" v-else @click="muteHandler"></i>
       <i class="volume">
-        <progressBox></progressBox>
+        <progress-bar :rate="volume"></progress-bar>
       </i>
     </div>
   </div>
 </template>
 
 <script>
-import ProgressBox from "./ProgressBox";
+import ProgressBar from "./ProgressBar";
 export default {
-  props: ["paused", "muted", "currentTime", "durationTime"],
+  props: ["paused", "muted", "currentTime", "durationTime", "rateOfProgress","volume"],
   methods: {
     playHandler() {
       this.$emit("playHandler");
@@ -35,7 +35,7 @@ export default {
     }
   },
   components: {
-    ProgressBox
+    ProgressBar
   }
 };
 </script>
