@@ -146,7 +146,7 @@ body {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   width: auto;
   height: 100vh;
-  background-image: url("./assets/1.png");
+  background-image: url("https://jordan-music.oss-cn-hangzhou.aliyuncs.com/1.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
